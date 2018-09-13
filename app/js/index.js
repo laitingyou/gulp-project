@@ -2,7 +2,27 @@ const Init = function() {
   let dataType={
 
   }
-  const getGoods=function () {
+  const request = function ({
+    url,
+    method='post',
+    args={}
+                            }) {
+    let query = ''
+    for (let i in args){
+      query += `?${i}=${args[i]}&`
+    }
+    console.log(query.slice(-1))
+    var xhr = new XMLHttpRequest();
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.open('post', '02.post.php' );
+    xhr.send('name=fox&age=18');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log(xhr.responseText);
+      }
+    };
+  }
+  const getGoods=function (pamater) {
     let tpl = document.getElementById('live-tpl').innerHTML
     let template = Handlebars.compile(tpl)
     var context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
@@ -26,6 +46,11 @@ const Init = function() {
     start:function () {
       getGoods()
       getLive()
+      request({
+        args:{
+          a:1,b:23
+        }
+      })
     }
   }
 }
