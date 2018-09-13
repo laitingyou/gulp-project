@@ -27,15 +27,17 @@ gulp.task('html', function () {
 })
 
 gulp.task('imagemin', function () {
-  return gulp.src('app/*.{png,jpg,gif}')
+  return gulp.src('app/images/*.{png,jpg,gif}')
     .pipe(
       imagemin({
-        optimizationLevel: 5, // 压缩等级
-        progressive: true // 无损
+        interlaced: true,
+        optimizationLevel: 7, // 压缩等级
+        progressive: false // 无损
       }))
+    .pipe(gulp.dest('dist/images'))
 })
 
-gulp.task('server', [ 'css', 'js', 'html' ], function () {
+gulp.task('server', [ 'css', 'js', 'html', 'imagemin' ], function () {
   browserSync.init({
     files: [ 'dist/*' ],
     server: {
@@ -47,6 +49,7 @@ gulp.task('server', [ 'css', 'js', 'html' ], function () {
   gulp.watch('app/scss/*.scss', [ 'css' ])
   gulp.watch('app/js/*.js', [ 'js' ])
   gulp.watch('app/*.html', [ 'html' ])
+  gulp.watch('app/images/*', [ 'imagemin' ])
 })
 
 gulp.task('default', [ 'server' ]);
