@@ -4,13 +4,159 @@
     <meta charset="UTF-8">
     <title>直播备货节</title>
     <link rel="stylesheet" href="./css/index.css" type="text/css">
+    <script>
+      var windowWidth = window.innerWidth,
+        sourceWidth = 1920;
+      document.getElementsByTagName('html')[ 0 ].style.fontSize = 100 * windowWidth / sourceWidth + 'px';
+      window.addEventListener('resize', function (ev) {
+        windowWidth = window.innerWidth
+        document.getElementsByTagName('html')[ 0 ].style.fontSize = 100 * windowWidth / sourceWidth + 'px';
+      })
+    </script>
 </head>
 <body>
-    <header class="container">
-        <img src="./images/header.jpg" alt="">
-    </header>
-    <div>
-
+<img id="top" class="banner" src="./images/header.jpg" alt="">
+<div class="wrapper">
+    <div class="content">
+        <div class="active-item" id="living-block">
+            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
+            <div class="item-container" id="live">
+            </div>
+        </div>
+        <div class="title-9">
+            <img src="./images/9.9_08.jpg" alt="">
+        </div>
+        <div class="goods-container">
+            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
+            <div class="item-container" id="goods-item">
+            </div>
+        </div>
+        <div class="goods-container">
+            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
+            <div class="item-container" id="goods-item1">
+            </div>
+        </div>
+        <div class="goods-container">
+            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
+            <div class="item-container" id="goods-item2">
+            </div>
+        </div>
+        <div class="goods-container">
+            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
+            <div class="item-container" id="goods-item3">
+            </div>
+        </div>
+        <footer>
+            <a href="#top">
+                <img class="cross" src="./images/across_12.png" alt="">
+            </a>
+        </footer>
     </div>
+    <div class="nav-container">
+        <div class="nav">
+            <a href="#living-block">
+                <img src="./images/01.png" alt=""></a>
+            <a href="#living-block" class="nav-hover">
+                <img src="./images/02.png" alt="">
+            </a>
+            <a href="#living-block" class="nav-hover">
+                <img src="./images/03.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/04.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/05.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/06.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/07.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/08.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/09.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/10.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/11.png" alt="">
+            </a>
+            <a href="" class="nav-hover">
+                <img src="./images/12.png" alt="">
+            </a>
+            <a href="">
+                <img src="./images/13.png" alt="">
+            </a>
+            <a href="#top" class="nav-hover">
+                <img src="./images/14.png" alt="">
+            </a>
+            <a href="">
+                <img src="./images/15.png" alt="">
+            </a>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script id="live-tpl" type="text/x-handlebars-template">
+    {{#each list}}
+    <div class="live-item">
+        <div class="live-item-container">
+            <div class="img">
+                <a style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
+                   alt=""></a>
+                <div class="float">
+                    <div class="live-tip">131244324243523</div>
+                    <div class="live-btn">
+                        <span class="living active">直播中</span><span>12323人在看</span>
+                    </div>
+                    <img class="xins stylie" src="//static.eelly.com/themes/mall/default/home/v6/images/live/1.png">
+                    <img class="xins stylie1" src="//static.eelly.com/themes/mall/default/home/v6/images/live/2.png">
+                    <img class="xins stylie2" src="//static.eelly.com/themes/mall/default/home/v6/images/live/3.png">
+                </div>
+            </div>
+            <div class="live-info">
+                <div class="live-name">衣联网商家</div>
+                <div class="sc-live-name">广州十三行批发商城</div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <div class="clear"></div>
+</script>
+<script id="good-tpl" type="text/x-handlebars-template">
+    {{#each list}}
+    <div class="good-tpl">
+        <div class="goods">
+            <div class="img">
+                <a style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
+                   alt=""></a>
+            </div>
+            <div class="goods-info">
+                <div class="goods-name">【古兰衣】好质量秋装2018新款韩版宽松百搭圆领套头网红慵懒风毛衣女针织衫女显瘦 深圳市福田区古兰衣服装厂</div>
+                <div class="price">
+                    <span class="source-price">原价￥12</span><span class="store-name">XDL服装</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="goods-btn">
+                    <span class="active-price">特价：<em>￥9.9</em></span><span class="buy">立即抢购></span>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <div class="clear"></div>
+</script>
+<script src="./static/handlebars-v4.0.11.js"></script>
+<script src="./js/index.js"></script>
 </body>
 </html>
