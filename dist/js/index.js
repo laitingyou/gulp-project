@@ -4,28 +4,52 @@ var Init = function Init() {
   var dataType = {};
 
   var request = function request(_ref) {
-    var url = _ref.url,
+    var _ref$url = _ref.url,
+        url = _ref$url === void 0 ? '' : _ref$url,
         _ref$method = _ref.method,
         method = _ref$method === void 0 ? 'post' : _ref$method,
         _ref$args = _ref.args,
-        args = _ref$args === void 0 ? {} : _ref$args;
-    var query = '';
+        args = _ref$args === void 0 ? {} : _ref$args,
+        success = _ref.success,
+        callback = _ref.callback,
+        fail = _ref.fail;
+    var callbackName = ('jsonp_' + Math.random()).replace(".", "");
+    var oHead = document.getElementsByTagName('head')[0];
+    args[callback] = callbackName;
+    var oS = document.createElement('script');
+    oHead.appendChild(oS);
+
+    window[callbackName] = function (json) {
+      oHead.removeChild(oS);
+      window[callbackName] = null;
+      success && success(json);
+    };
+
+    var query = '?';
 
     for (var i in args) {
-      query += "?".concat(i, "=").concat(args[i], "&");
+      query += "".concat(i, "=").concat(args[i], "&");
     }
 
-    console.log(query.slice(-1));
-    var xhr = new XMLHttpRequest();
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.open('post', '02.post.php');
-    xhr.send('name=fox&age=18');
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(xhr.responseText);
-      }
-    };
+    query = query.slice(0, -1);
+    oS.src = url + query; // let xhr = new XMLHttpRequest();
+    // // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    // // xhr.setRequestHeader("","");
+    // if(method == 'get'){
+    //   xhr.open(method, url+query , true);
+    //   xhr.send();
+    // }else {
+    //   xhr.open(method, url, true );
+    //   xhr.send(query);
+    // }
+    // // xhr.responseType = 'text';
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4 && xhr.status == 200) {
+    //     success && success(xhr.responseText)
+    //   }else {
+    //     fail && fail(JSON.parse(xhr.responseText))
+    //   }
+    // };
   };
 
   var getGoods = function getGoods(pamater) {
@@ -63,9 +87,16 @@ var Init = function Init() {
       getGoods();
       getLive();
       request({
+        url: 'https://www.eelly.test/index.php',
+        method: 'get',
+        callback: 'callback',
         args: {
-          a: 1,
-          b: 23
+          app: 'activity',
+          act: 'activityGoods',
+          act_id: '9891'
+        },
+        success: function success(res) {
+          console.log(res);
         }
       });
     }

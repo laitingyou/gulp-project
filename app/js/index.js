@@ -3,24 +3,47 @@ const Init = function() {
 
   }
   const request = function ({
-    url,
+    url= '',
     method='post',
-    args={}
+    args={},
+    success,
+     callback ,
+    fail
                             }) {
-    let query = ''
-    for (let i in args){
-      query += `?${i}=${args[i]}&`
-    }
-    console.log(query.slice(-1))
-    var xhr = new XMLHttpRequest();
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xhr.open('post', '02.post.php' );
-    xhr.send('name=fox&age=18');
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(xhr.responseText);
-      }
+    var callbackName = ('jsonp_' + Math.random()).replace(".", "");
+    var oHead = document.getElementsByTagName('head')[0];
+    args[callback] = callbackName;
+    var oS = document.createElement('script');
+    oHead.appendChild(oS);
+    window[callbackName] = function (json) {
+      oHead.removeChild(oS);
+      window[callbackName] = null;
+      success && success(json);
     };
+    let query = '?'
+    for (let i in args){
+      query += `${i}=${args[i]}&`
+    }
+    query = query.slice(0,-1)
+    oS.src = url + query;
+    // let xhr = new XMLHttpRequest();
+    // // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    // // xhr.setRequestHeader("","");
+    // if(method == 'get'){
+    //   xhr.open(method, url+query , true);
+    //   xhr.send();
+    // }else {
+    //   xhr.open(method, url, true );
+    //   xhr.send(query);
+    // }
+    // // xhr.responseType = 'text';
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState == 4 && xhr.status == 200) {
+    //     success && success(xhr.responseText)
+    //   }else {
+    //     fail && fail(JSON.parse(xhr.responseText))
+    //   }
+    // };
   }
   const getGoods=function (pamater) {
     let tpl = document.getElementById('live-tpl').innerHTML
@@ -47,8 +70,16 @@ const Init = function() {
       getGoods()
       getLive()
       request({
-        args:{
-          a:1,b:23
+        url:'https://www.eelly.test/index.php',
+        method: 'get',
+        callback: 'callback',
+          args:{
+            app:'activity',
+            act: 'activityGoods',
+            act_id: '9891',
+          },
+        success(res){
+          console.log(res)
         }
       })
     }
