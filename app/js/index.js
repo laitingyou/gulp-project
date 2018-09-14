@@ -13,10 +13,16 @@ const Init = function() {
   }
   let dataType={}
 
-
-  const request = function ({
+  /**
+   * jsonp 跨域请求
+   * @param url 链接
+   * @param args 参数
+   * @param success 成功回调
+   * @param callback 跨域回调名字
+   * @param fail 失败回调
+   */
+  const jsonp = function ({
     url= '',
-    method='post',
     args={},
     success,
      callback ,
@@ -60,10 +66,13 @@ const Init = function() {
     //   }
     // };
   }
+  /**
+   * 获取商品
+   * @param act_type
+   */
   const getGoods=function (act_type) {
-    request({
+    jsonp({
       url:'https://www.eelly.test/index.php',
-      method: 'get',
       callback: 'callback',
       args:{
         app:'activity',
@@ -74,8 +83,8 @@ const Init = function() {
         dataType[act_type] = res.goodsList
         let tpl = document.getElementById('good-tpl').innerHTML
         let template = Handlebars.compile(tpl)
-        var context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
-        var html = template(context);
+        let context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
+        let html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html
       },
       fail(err){
@@ -83,20 +92,28 @@ const Init = function() {
       }
     })
   }
+  /**
+   * 获取直播列表
+   * @param pamater
+   */
   const  getLive=function (pamater) {
     let tpl = document.getElementById('live-tpl').innerHTML
     let template = Handlebars.compile(tpl)
-    var context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
-    var html = template(context);
+    let context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
+    let html = template(context);
     document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html
-    // document.getElementById('goods-item1').innerHTML = html
-    // document.getElementById('goods-item2').innerHTML = html
-    // document.getElementById('goods-item3').innerHTML = html
   }
+  /**
+   * 监听hash值变化
+   */
   window.addEventListener('hashchange', function () {
     let act_type = location.hash.replace('#','')
     dataType[act_type] || getGoods(act_type)
   })
+  /**
+   * 数据滚动加载
+   * @type {null}
+   */
   let timer = null
   window.addEventListener('scroll', function (e) {
     clearTimeout(timer)
@@ -115,7 +132,7 @@ const Init = function() {
         }
       }
       for (let item of containers ){
-        if(scrollTop - item.offsetTop > 100 && scrollTop - item.offsetTop < 300){
+        if( scrollTop - item.offsetTop < 300){
           let id = item.getAttribute('id')
           for(let child of document.getElementsByClassName('nav')[0].children){
             child.className = ''
@@ -126,6 +143,10 @@ const Init = function() {
       }
     },50)
   })
+
+  /**
+   * 对外开放函数
+   */
   return {
     start:function () {
       getGoods('temai')
@@ -134,5 +155,7 @@ const Init = function() {
     }
   }
 }
+
+// 实例
 let app = new Init()
-app.start()
+app.start() // 启动

@@ -14,12 +14,18 @@ var Init = function Init() {
     niuzai: 9928
   };
   var dataType = {};
+  /**
+   * jsonp 跨域请求
+   * @param url 链接
+   * @param args 参数
+   * @param success 成功回调
+   * @param callback 跨域回调名字
+   * @param fail 失败回调
+   */
 
-  var request = function request(_ref) {
+  var jsonp = function jsonp(_ref) {
     var _ref$url = _ref.url,
         url = _ref$url === void 0 ? '' : _ref$url,
-        _ref$method = _ref.method,
-        method = _ref$method === void 0 ? 'post' : _ref$method,
         _ref$args = _ref.args,
         args = _ref$args === void 0 ? {} : _ref$args,
         success = _ref.success,
@@ -68,11 +74,15 @@ var Init = function Init() {
     //   }
     // };
   };
+  /**
+   * 获取商品
+   * @param act_type
+   */
+
 
   var getGoods = function getGoods(act_type) {
-    request({
+    jsonp({
       url: 'https://www.eelly.test/index.php',
-      method: 'get',
       callback: 'callback',
       args: {
         app: 'activity',
@@ -96,6 +106,11 @@ var Init = function Init() {
       }
     });
   };
+  /**
+   * 获取直播列表
+   * @param pamater
+   */
+
 
   var getLive = function getLive(pamater) {
     var tpl = document.getElementById('live-tpl').innerHTML;
@@ -106,15 +121,22 @@ var Init = function Init() {
       content: "learn Handlebars"
     };
     var html = template(context);
-    document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html; // document.getElementById('goods-item1').innerHTML = html
-    // document.getElementById('goods-item2').innerHTML = html
-    // document.getElementById('goods-item3').innerHTML = html
+    document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html;
   };
+  /**
+   * 监听hash值变化
+   */
+
 
   window.addEventListener('hashchange', function () {
     var act_type = location.hash.replace('#', '');
     dataType[act_type] || getGoods(act_type);
   });
+  /**
+   * 数据滚动加载
+   * @type {null}
+   */
+
   var timer = null;
   window.addEventListener('scroll', function (e) {
     clearTimeout(timer);
@@ -164,7 +186,7 @@ var Init = function Init() {
         for (var _iterator2 = containers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var _item = _step2.value;
 
-          if (scrollTop - _item.offsetTop > 100 && scrollTop - _item.offsetTop < 300) {
+          if (scrollTop - _item.offsetTop < 300) {
             var _id = _item.getAttribute('id');
 
             var _iteratorNormalCompletion3 = true;
@@ -211,13 +233,18 @@ var Init = function Init() {
       }
     }, 50);
   });
+  /**
+   * 对外开放函数
+   */
+
   return {
     start: function start() {
       getGoods('temai');
       getLive();
     }
   };
-};
+}; // 实例
+
 
 var app = new Init();
-app.start();
+app.start(); // 启动
