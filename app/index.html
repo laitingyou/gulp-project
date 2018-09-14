@@ -15,55 +15,95 @@
     </script>
 </head>
 <body>
-<img id="top" class="banner" src="./images/header.jpg" alt="">
+<div class="banner-container">
+    <div class="tips">
+        <a href=""><img src="./images/home.jpg" alt=""></a>
+        <img src="./images/tips.jpg" alt="">
+        <div class="timer">
+            <div>距离活动结束还有</div>
+            <div id="top-timer">6天14时25分</div>
+        </div>
+    </div>
+    <img id="top" class="banner" src="./images/header.jpg" alt="">
+</div>
 <div class="wrapper">
     <div class="content">
-        <div class="active-item" id="living-block">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="live">
+        <div class="goods-container" id="living">
+            <img class="item-img" src="./images/zhibo.jpg" alt="">
+            <div class="item-container">
             </div>
         </div>
-        <div class="title-9" id="temai">
+        <div class="title-9">
             <img src="./images/9.9_08.jpg" alt="">
         </div>
+        <div class="goods-container" id="temai">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/temai.jpg" alt="">
+            <div class="item-container" >
+            </div>
+        </div>
         <div class="goods-container" id="zhekou">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/zhekou.jpg" alt="">
+            <div class="item-container" >
             </div>
         </div>
         <div class="goods-container" id="miaosha">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item1">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/miaosha.jpg" alt="">
+            <div class="item-container" >
             </div>
         </div>
         <div class="goods-container" id="maoyi">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item2">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/maoyi.jpg" alt="">
+            <div class="item-container">
+            </div>
+        </div>
+        <div class="goods-container" id="weiyi">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/weiyi.jpg" alt="">
+            <div class="item-container">
             </div>
         </div>
         <div class="goods-container" id="waitao">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item3">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/waitao.jpg" alt="">
+            <div class="item-container" >
             </div>
         </div>
         <div class="goods-container" id="dayi">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item3">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/dayi.jpg" alt="">
+            <div class="item-container">
             </div>
         </div>
         <div class="goods-container" id="old">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item3">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/old.jpg" alt="">
+            <div class="item-container">
             </div>
         </div>
         <div class="goods-container" id="neiyi">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item3">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/neiyi.jpg" alt="">
+            <div class="item-container">
             </div>
         </div>
+        <!--<div class="goods-container" id="old">-->
+        <!--<img class="item-img" src="./images/old.jpg" alt="">-->
+        <!--<div class="item-container" id="goods-item3">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="goods-container" id="neiyi">-->
+        <!--<img class="item-img" src="./images/neiyi.jpg" alt="">-->
+        <!--<div class="item-container" id="goods-item3">-->
+        <!--</div>-->
+        <!--</div>-->
         <div class="goods-container" id="niuzai">
-            <img class="item-img" src="./images/zhibo_04.jpg" alt="">
-            <div class="item-container" id="goods-item3">
+            <div class="timer-container"></div>
+            <img class="item-img" src="./images/niuzai.jpg" alt="">
+            <div class="item-container">
             </div>
         </div>
         <footer>
@@ -74,109 +114,122 @@
     </div>
     <div class="nav-container">
         <div class="nav">
-            <a href="#living-block">
-                <img src="./images/01.png" alt=""></a>
-            <a href="#living-block" class="nav-hover">
-                <img src="./images/02.png" alt="">
-            </a>
-            <a href="#temai" class="nav-hover">
-                <img src="./images/03.png" alt="">
-            </a>
-            <a href="#zhekou" class="nav-hover">
+            <a href="javaScript:void (0)" class="" id="topic">
+                <img src="./images/02.png" alt=""></a>
+            <a href="#living" class="nav-hover" id="nav-living">
                 <img src="./images/04.png" alt="">
             </a>
-            <a href="#miaosha" class="nav-hover">
-                <img src="./images/05.png" alt="">
-            </a>
-            <a href="#maoyi" class="nav-hover">
+            <a href="#temai" class="nav-hover" id="nav-temai">
                 <img src="./images/06.png" alt="">
             </a>
-            <a href="#weiyi" class="nav-hover">
+            <a href="#zhekou" class="nav-hover" id="nav-zhekou">
                 <img src="./images/07.png" alt="">
             </a>
-            <a href="#waitao" class="nav-hover">
+            <a href="#miaosha" class="nav-hover" id="nav-miaosha">
                 <img src="./images/08.png" alt="">
             </a>
-            <a href="#dayi" class="nav-hover">
-                <img src="./images/09.png" alt="">
-            </a>
-            <a href="#old" class="nav-hover">
+            <a href="#maoyi" class="nav-hover" id="nav-maoyi">
                 <img src="./images/10.png" alt="">
             </a>
-            <a href="#neiyi" class="nav-hover">
+            <a href="#weiyi" class="nav-hover" id="nav-weiyi">
                 <img src="./images/11.png" alt="">
             </a>
-            <a href="#niuzai" class="nav-hover">
-                <img src="./images/12.png" alt="">
+            <a href="#waitao" class="nav-hover" id="nav-waitao">
+                <img src="./images/12.png" alt="" >
             </a>
-            <a href="javaScript:void (0)">
+            <a href="#dayi" class="nav-hover" id="nav-dayi">
                 <img src="./images/13.png" alt="">
             </a>
-            <a href="#top" class="nav-hover">
+            <a href="#old" class="nav-hover" id="nav-old">
                 <img src="./images/14.png" alt="">
             </a>
-            <a href="javaScript:void (0)">
+            <a href="#neiyi" class="nav-hover" id="nav-neiyi">
                 <img src="./images/15.png" alt="">
+            </a>
+            <a href="#niuzai" class="nav-hover" id="nav-niuzai">
+                <img src="./images/16.png" alt="">
+            </a>
+            <a href="javaScript:void (0)" id="scan">
+                <img src="./images/17.png" alt="">
+            </a>
+            <a href="javaScript:void (0)" id="scrolltop" onclick="window.scrollTo(0,0)" class="nav-hover">
+                <img src="./images/20.png" alt="">
+            </a>
+            <a href="javaScript:void (0)" id="liwu">
+                <img src="./images/22.png" alt="">
             </a>
 
         </div>
     </div>
 
 </div>
-
-
-
+<script id="timer" type="text/x-handlebars-template">
+    <div class="thisTimer">
+        <div>距离本场结束</div>
+        <div><span class="hour">{{hh}}</span> 时 <span class="minute">{{mm}}</span> 分 <span class="second">{{ss}}</span> 秒</div>
+    </div>
+</script>
 <script id="live-tpl" type="text/x-handlebars-template">
     {{#each list}}
-    <div class="live-item">
-        <div class="live-item-container">
-            <div class="img">
-                <a style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
-                   alt=""></a>
-                <div class="float">
-                    <div class="live-tip">131244324243523</div>
-                    <div class="live-btn">
-                        <span class="living active">直播中</span><span>12323人在看</span>
+    {{#divstart @index}}
+    <div class="grid">
+        {{/divstart}}
+    <a href="#" class="live-item">
+            <div class="live-item-container">
+                <div class="img">
+                    <div class="bg" style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
+                       alt=""></div>
+                    <div class="float">
+                        <div class="live-tip">131244324243523</div>
+                        <div class="live-btn">
+                            <span class="living active">直播中</span><span>1233人在看</span>
+                        </div>
+                        <img class="xins stylie" src="//static.eelly.com/themes/mall/default/home/v6/images/live/1.png">
+                        <img class="xins stylie1" src="//static.eelly.com/themes/mall/default/home/v6/images/live/2.png">
+                        <img class="xins stylie2" src="//static.eelly.com/themes/mall/default/home/v6/images/live/3.png">
                     </div>
-                    <img class="xins stylie" src="//static.eelly.com/themes/mall/default/home/v6/images/live/1.png">
-                    <img class="xins stylie1" src="//static.eelly.com/themes/mall/default/home/v6/images/live/2.png">
-                    <img class="xins stylie2" src="//static.eelly.com/themes/mall/default/home/v6/images/live/3.png">
+                </div>
+                <div class="live-info">
+                    <div class="live-name">衣联网商家</div>
+                    <div class="sc-live-name">广州十三行批发商城</div>
                 </div>
             </div>
-            <div class="live-info">
-                <div class="live-name">衣联网商家</div>
-                <div class="sc-live-name">广州十三行批发商城</div>
-            </div>
-        </div>
+    </a>
+        {{#divend @index}}
     </div>
+    {{/divend}}
     {{/each}}
     <div class="clear"></div>
 </script>
 <script id="good-tpl" type="text/x-handlebars-template">
     {{#each list}}
-    <div class="good-tpl">
-        <div class="goods">
-            <div class="img">
-                <a style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
-                   alt=""></a>
-            </div>
-            <div class="goods-info">
-                <div class="goods-name">【古兰衣】好质量秋装2018新款韩版宽松百搭圆领套头网红慵懒风毛衣女针织衫女显瘦 深圳市福田区古兰衣服装厂</div>
-                <div class="price">
-                    <span class="source-price">原价￥12</span><span class="store-name">XDL服装</span>
-                    <div class="clear"></div>
+    {{#divstart @index}}
+    <div class="grid">
+    {{/divstart}}
+        <a href="#" class="good-tpl">
+            <div class="goods">
+                <div class="img">
+                    <div class="bg" style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
+                       alt=""></div>
                 </div>
-                <div class="goods-btn">
-                    <span class="active-price">特价：<em>￥9.9</em></span><span class="buy">立即抢购></span>
-                    <div class="clear"></div>
+                <div class="goods-info">
+                    <div class="goods-name">【古兰衣】好质量秋装2018新款韩版宽松百搭圆领套头网红慵懒风毛衣女针织衫女显瘦 深圳市福田区古兰衣服装厂</div>
+                    <div class="price">
+                        <span class="source-price">原价￥12</span><span class="store-name">XDL服装</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="goods-btn">
+                        <span class="active-price">特价：<em>￥9.9</em></span><span class="buy">立即抢购></span>
+                        <div class="clear"></div>
+                    </div>
                 </div>
             </div>
+        </a>
+        {{#divend @index}}
         </div>
-    </div>
+         {{/divend}}
     {{/each}}
-    <div class="clear"></div>
 </script>
-<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script src="./static/handlebars-v4.0.11.js"></script>
 <script src="./js/index.js"></script>
 </body>

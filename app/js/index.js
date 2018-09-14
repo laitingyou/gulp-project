@@ -67,6 +67,34 @@ const Init = function() {
     // };
   }
   /**
+   * 注册口令
+   */
+  const register=function () {
+    Handlebars.registerHelper('divstart',function(v1 ,options){
+      if(v1 % 4 === 0){
+        return options.fn(this);
+      }
+      return options.inverse(this);
+    });
+    Handlebars.registerHelper('divend',function(v1 ,options){
+      if(v1  === 3 || v1 === 7){
+        return options.fn(this);
+      }
+      return options.inverse(this);
+    });
+  }
+  /**
+   * 场次倒计时
+   */
+  let timerTemplate = function (act_type) {
+    let tpl = document.getElementById('timer').innerHTML
+    let template = Handlebars.compile(tpl)
+    timeHandler(10000,function (time) {
+      let html = template(time);
+      document.getElementById(act_type).getElementsByClassName('timer-container')[0].innerHTML = html
+    })
+  }
+  /**
    * 获取商品
    * @param act_type
    */
@@ -86,6 +114,7 @@ const Init = function() {
         let context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
         let html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html
+        timerTemplate(act_type)
       },
       fail(err){
         console.log(err)
@@ -103,53 +132,96 @@ const Init = function() {
     let html = template(context);
     document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html
   }
+
+
+  let allTimer = []
   /**
-   * 监听hash值变化
+   * 格式化时间
+   * @param time
+   * @returns {string}
    */
-  window.addEventListener('hashchange', function () {
-    let act_type = location.hash.replace('#','')
-    dataType[act_type] || getGoods(act_type)
-  })
+  const timeFormat = function (time) {
+    let s = time;
+    let dd = Math.floor(s / 86400)
+    let hh = ('0' + (Math.floor(s / 3600) - dd * 24)).slice(-2)
+    let mm = ('0' + (Math.floor(s / 60) - dd * 24 * 60 - hh * 60)).slice(-2)
+    let ss = ('0' + (s % 60)).slice(-2)
+    if (dd === '00' && hh === '00' && mm === '00' && ss === '00') return;
+    if (dd.length < 2) {
+      dd = ~~('0' + dd)
+    }
+    return {dd,hh,mm,ss}
+  }
   /**
-   * 数据滚动加载
-   * @type {null}
+   * 倒计时
+   * @param time
+   * @param callback
    */
-  let timer = null
-  window.addEventListener('scroll', function (e) {
-    clearTimeout(timer)
-    timer = setTimeout(function () {
-      let scrollTop = document.documentElement.scrollTop
-      let containers = document.getElementsByClassName('goods-container')
-      for (let item of containers ){
-        if(scrollTop - item.offsetTop < 200){
-          let id = item.getAttribute('id')
-          if(id === 'living'){
-            getLive()
-          }else {
-            dataType[id] || getGoods(id)
+  const timeHandler = function (time,callback) {
+    callback(timeFormat(time))
+    setTimeout(function () {
+      timeHandler(--time, callback)
+    },1000)
+  }
+  /**
+   * 页面进入执行
+   */
+  const mouted = function () {
+    register()
+
+    timeHandler(10000,function (time) {
+      let {dd, hh, mm, ss} = time
+      document.getElementById('top-timer').innerHTML = dd > 0? `${dd}天${hh}小时${mm}分`:`${hh}小时${mm}分${ss}秒`
+    })
+    /**
+     * 监听hash值变化
+     */
+    window.addEventListener('hashchange', function () {
+      let act_type = location.hash.replace('#','')
+      dataType[act_type] || getGoods(act_type)
+    })
+    /**
+     * 数据滚动加载
+     * @type {null}
+     */
+    let timer = null
+    window.addEventListener('scroll', function (e) {
+      clearTimeout(timer)
+      timer = setTimeout(function () {
+        let scrollTop = document.documentElement.scrollTop
+        let containers = document.getElementsByClassName('goods-container')
+        for (let item of containers ){
+          if(scrollTop - item.offsetTop < 200){
+            let id = item.getAttribute('id')
+            if(id === 'living'){
+              getLive()
+            }else {
+              dataType[id] || getGoods(id)
+            }
+            break
           }
-          break
         }
-      }
-      for (let item of containers ){
-        if( scrollTop - item.offsetTop < 300){
-          let id = item.getAttribute('id')
-          for(let child of document.getElementsByClassName('nav')[0].children){
-            child.className = ''
+        for (let item of containers ){
+          if( scrollTop - item.offsetTop < 1000){
+            let id = item.getAttribute('id')
+            for(let child of document.getElementsByClassName('nav')[0].children){
+              child.className = ''
+            }
+            document.getElementById(`nav-${id}`).className = 'hover'
+            break
           }
-          document.getElementById(`nav-${id}`).className = 'hover'
-          break
         }
-      }
-    },50)
-  })
+      },50)
+    })
+  }
 
   /**
    * 对外开放函数
    */
   return {
     start:function () {
-      getGoods('temai')
+      // getGoods('temai')
+      mouted()
       getLive()
 
     }

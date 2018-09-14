@@ -48,7 +48,7 @@ gulp.task('server', [ 'css', 'js', 'html', 'imagemin' ], function () {
       baseDir: 'dist',
       index: '/index.html'
     },
-    port: '8080'
+    port: '8083'
   })
   gulp.watch('app/scss/*.scss', [ 'css' ])
   gulp.watch('app/js/*.js', [ 'js' ])

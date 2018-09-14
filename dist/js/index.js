@@ -75,6 +75,40 @@ var Init = function Init() {
     // };
   };
   /**
+   * 注册口令
+   */
+
+
+  var register = function register() {
+    Handlebars.registerHelper('divstart', function (v1, options) {
+      if (v1 % 4 === 0) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    });
+    Handlebars.registerHelper('divend', function (v1, options) {
+      if (v1 === 3 || v1 === 7) {
+        return options.fn(this);
+      }
+
+      return options.inverse(this);
+    });
+  };
+  /**
+   * 场次倒计时
+   */
+
+
+  var timerTemplate = function timerTemplate(act_type) {
+    var tpl = document.getElementById('timer').innerHTML;
+    var template = Handlebars.compile(tpl);
+    timeHandler(10000, function (time) {
+      var html = template(time);
+      document.getElementById(act_type).getElementsByClassName('timer-container')[0].innerHTML = html;
+    });
+  };
+  /**
    * 获取商品
    * @param act_type
    */
@@ -100,6 +134,7 @@ var Init = function Init() {
         };
         var html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html;
+        timerTemplate(act_type);
       },
       fail: function fail(err) {
         console.log(err);
@@ -123,123 +158,179 @@ var Init = function Init() {
     var html = template(context);
     document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html;
   };
+
+  var allTimer = [];
   /**
-   * 监听hash值变化
+   * 格式化时间
+   * @param time
+   * @returns {string}
+   */
+
+  var timeFormat = function timeFormat(time) {
+    var s = time;
+    var dd = Math.floor(s / 86400);
+    var hh = ('0' + (Math.floor(s / 3600) - dd * 24)).slice(-2);
+    var mm = ('0' + (Math.floor(s / 60) - dd * 24 * 60 - hh * 60)).slice(-2);
+    var ss = ('0' + s % 60).slice(-2);
+    if (dd === '00' && hh === '00' && mm === '00' && ss === '00') return;
+
+    if (dd.length < 2) {
+      dd = ~~('0' + dd);
+    }
+
+    return {
+      dd: dd,
+      hh: hh,
+      mm: mm,
+      ss: ss
+    };
+  };
+  /**
+   * 倒计时
+   * @param time
+   * @param callback
    */
 
 
-  window.addEventListener('hashchange', function () {
-    var act_type = location.hash.replace('#', '');
-    dataType[act_type] || getGoods(act_type);
-  });
+  var timeHandler = function timeHandler(time, callback) {
+    callback(timeFormat(time));
+    setTimeout(function () {
+      timeHandler(--time, callback);
+    }, 1000);
+  };
   /**
-   * 数据滚动加载
-   * @type {null}
+   * 页面进入执行
    */
 
-  var timer = null;
-  window.addEventListener('scroll', function (e) {
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      var scrollTop = document.documentElement.scrollTop;
-      var containers = document.getElementsByClassName('goods-container');
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
 
-      try {
-        for (var _iterator = containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var item = _step.value;
+  var mouted = function mouted() {
+    register();
+    timeHandler(10000, function (time) {
+      var dd = time.dd,
+          hh = time.hh,
+          mm = time.mm,
+          ss = time.ss;
+      document.getElementById('top-timer').innerHTML = dd > 0 ? "".concat(dd, "\u5929").concat(hh, "\u5C0F\u65F6").concat(mm, "\u5206") : "".concat(hh, "\u5C0F\u65F6").concat(mm, "\u5206").concat(ss, "\u79D2");
+    });
+    /**
+     * 监听hash值变化
+     */
 
-          if (scrollTop - item.offsetTop < 200) {
-            var id = item.getAttribute('id');
+    window.addEventListener('hashchange', function () {
+      var act_type = location.hash.replace('#', '');
+      dataType[act_type] || getGoods(act_type);
+    });
+    /**
+     * 数据滚动加载
+     * @type {null}
+     */
 
-            if (id === 'living') {
-              getLive();
-            } else {
-              dataType[id] || getGoods(id);
-            }
+    var timer = null;
+    window.addEventListener('scroll', function (e) {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var scrollTop = document.documentElement.scrollTop;
+        var containers = document.getElementsByClassName('goods-container');
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
 
-            break;
-          }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
+          for (var _iterator = containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var item = _step.value;
+
+            if (scrollTop - item.offsetTop < 200) {
+              var id = item.getAttribute('id');
+
+              if (id === 'living') {
+                getLive();
+              } else {
+                dataType[id] || getGoods(id);
+              }
+
+              break;
+            }
           }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
           }
         }
-      }
 
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
-      try {
-        for (var _iterator2 = containers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var _item = _step2.value;
+        try {
+          for (var _iterator2 = containers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var _item = _step2.value;
 
-          if (scrollTop - _item.offsetTop < 300) {
-            var _id = _item.getAttribute('id');
+            if (scrollTop - _item.offsetTop < 1000) {
+              var _id = _item.getAttribute('id');
 
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+              var _iteratorNormalCompletion3 = true;
+              var _didIteratorError3 = false;
+              var _iteratorError3 = undefined;
 
-            try {
-              for (var _iterator3 = document.getElementsByClassName('nav')[0].children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                var child = _step3.value;
-                child.className = '';
-              }
-            } catch (err) {
-              _didIteratorError3 = true;
-              _iteratorError3 = err;
-            } finally {
               try {
-                if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-                  _iterator3.return();
+                for (var _iterator3 = document.getElementsByClassName('nav')[0].children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                  var child = _step3.value;
+                  child.className = '';
                 }
+              } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
               } finally {
-                if (_didIteratorError3) {
-                  throw _iteratorError3;
+                try {
+                  if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+                    _iterator3.return();
+                  }
+                } finally {
+                  if (_didIteratorError3) {
+                    throw _iteratorError3;
+                  }
                 }
               }
-            }
 
-            document.getElementById("nav-".concat(_id)).className = 'hover';
-            break;
+              document.getElementById("nav-".concat(_id)).className = 'hover';
+              break;
+            }
           }
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-            _iterator2.return();
-          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
           }
         }
-      }
-    }, 50);
-  });
+      }, 50);
+    });
+  };
   /**
    * 对外开放函数
    */
 
+
   return {
     start: function start() {
-      getGoods('temai');
+      // getGoods('temai')
+      mouted();
       getLive();
     }
   };

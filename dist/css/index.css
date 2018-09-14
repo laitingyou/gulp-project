@@ -8,6 +8,10 @@ html, body {
 body {
   font-size: 14px; }
 
+a {
+  color: inherit;
+  text-decoration: none; }
+
 .banner {
   width: 100%;
   display: block; }
@@ -17,17 +21,42 @@ body {
   justify-content: center;
   background: repeating-linear-gradient(#e31f1f 0%, #f16cd1 100%); }
 
+.banner-container {
+  position: relative; }
+  .banner-container .tips {
+    position: absolute;
+    top: 0;
+    left: 2rem; }
+    .banner-container .tips img {
+      display: block;
+      margin-bottom: 4px; }
+      .banner-container .tips img:nth-of-type(2) {
+        box-shadow: 5px 4px 5px 0px #944e4e; }
+    .banner-container .tips .timer {
+      padding: 10px 0;
+      text-align: center;
+      background: #48d4f1;
+      font-weight: 600;
+      line-height: 30px;
+      font-size: 18px;
+      box-shadow: 5px 4px 5px 0px #944e4e; }
+
+.grid {
+  display: flex;
+  justify-content: space-between; }
+
 /*-------live----------*/
 .clear {
   clear: both; }
 
 .live-item {
-  float: left;
-  width: 25%;
+  display: block;
+  width: 24%;
   height: 3.40rem;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: .2rem; }
   .live-item .live-item-container {
-    width: 2.9rem;
+    width: 100%;
     background: #fff; }
   .live-item .xins {
     position: absolute;
@@ -185,7 +214,7 @@ body {
     height: 2.50rem;
     overflow: hidden;
     position: relative; }
-    .live-item .img a {
+    .live-item .img .bg {
       background-repeat: no-repeat;
       background-position: center;
       display: block;
@@ -216,9 +245,8 @@ body {
       padding: 0 15px 0 20px;
       float: left; }
   .live-item .live-info {
-    width: 98%;
     overflow: hidden;
-    padding: .1rem 0;
+    padding: .2rem 0;
     box-sizing: border-box;
     text-align: center;
     font-size: 16px; }
@@ -229,19 +257,37 @@ body {
   .live-item :nth-of-type(8) {
     margin: 0; }
 
+.thisTimer {
+  position: absolute;
+  top: .3rem;
+  right: .5rem;
+  padding: 10px 0;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 30px;
+  font-size: 18px; }
+  .thisTimer .hour, .thisTimer .minute, .thisTimer .second {
+    margin-top: 10px;
+    width: 25px;
+    background: rgba(0, 0, 0, 0.62);
+    padding: 0 3px;
+    border-radius: 4px;
+    display: inline-block; }
+
 /*----good--*/
 .good-tpl {
-  float: left;
-  width: 25%;
+  display: block;
+  width: 24%;
   height: 5.11rem;
   text-align: center; }
   .good-tpl .goods {
     display: inline-block;
-    width: 2.9rem;
+    width: 100%;
     background: #ffffff; }
   .good-tpl .img {
     height: 3.3rem; }
-    .good-tpl .img a {
+    .good-tpl .img .bg {
       background-repeat: no-repeat;
       background-position: center;
       display: block;
@@ -292,6 +338,9 @@ body {
   .content .active-item {
     width: 12rem;
     margin: 0 auto; }
+    @media screen and (max-width: 1299px) {
+      .content .active-item {
+        width: 15rem; } }
     .content .active-item .item-img {
       width: 100%;
       height: 1.64rem; }
@@ -303,8 +352,12 @@ body {
     height: 1.53rem; }
 
 .goods-container {
+  position: relative;
   width: 12rem;
   margin: 0 auto; }
+  @media screen and (max-width: 1299px) {
+    .goods-container {
+      width: 15rem; } }
   .goods-container .item-img {
     width: 100%;
     display: block; }
@@ -336,10 +389,10 @@ body {
   z-index: 2; }
   .nav a {
     display: block; }
-    .nav a:hover:not(#topic) {
+    .nav a:hover:not(#topic):not(#scan):not(#scrolltop):not(#liwu) {
       -webkit-transform: scale(1.2);
       transform: scale(1.2);
-      transition: all 300; }
+      transition: all 200ms; }
   .nav img {
     display: block;
     width: 100%; }
