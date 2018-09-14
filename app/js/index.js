@@ -11,9 +11,9 @@ const Init = function() {
       waitao: 9927,
       niuzai: 9928
   }
-  let dataType={
+  let dataType={}
 
-  }
+
   const request = function ({
     url= '',
     method='post',
@@ -60,7 +60,7 @@ const Init = function() {
     //   }
     // };
   }
-  const getGoods=function (act_id) {
+  const getGoods=function (act_type) {
     request({
       url:'https://www.eelly.test/index.php',
       method: 'get',
@@ -68,15 +68,15 @@ const Init = function() {
       args:{
         app:'activity',
         act: 'activityGoods',
-        act_id,
+        act_id: navHash[act_type],
       },
       success(res){
-        dataType[act_id] = res
-        let tpl = document.getElementById('live-tpl').innerHTML
+        dataType[act_type] = res.goodsList
+        let tpl = document.getElementById('good-tpl').innerHTML
         let template = Handlebars.compile(tpl)
         var context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
         var html = template(context);
-        document.getElementById('live').innerHTML = html
+        document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html
       },
       fail(err){
         console.log(err)
@@ -84,23 +84,51 @@ const Init = function() {
     })
   }
   const  getLive=function (pamater) {
-    let tpl = document.getElementById('good-tpl').innerHTML
+    let tpl = document.getElementById('live-tpl').innerHTML
     let template = Handlebars.compile(tpl)
     var context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
     var html = template(context);
-    document.getElementById('goods-item').innerHTML = html
-    document.getElementById('goods-item1').innerHTML = html
-    document.getElementById('goods-item2').innerHTML = html
-    document.getElementById('goods-item3').innerHTML = html
+    document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html
+    // document.getElementById('goods-item1').innerHTML = html
+    // document.getElementById('goods-item2').innerHTML = html
+    // document.getElementById('goods-item3').innerHTML = html
   }
   window.addEventListener('hashchange', function () {
-    let act_id = location.hash.replace('#','')
-    console.log(navHash[act_id])
-    dataType[act_id] || getGoods(navHash[act_id])
+    let act_type = location.hash.replace('#','')
+    dataType[act_type] || getGoods(act_type)
+  })
+  let timer = null
+  window.addEventListener('scroll', function (e) {
+    clearTimeout(timer)
+    timer = setTimeout(function () {
+      let scrollTop = document.documentElement.scrollTop
+      let containers = document.getElementsByClassName('goods-container')
+      for (let item of containers ){
+        if(scrollTop - item.offsetTop < 200){
+          let id = item.getAttribute('id')
+          if(id === 'living'){
+            getLive()
+          }else {
+            dataType[id] || getGoods(id)
+          }
+          break
+        }
+      }
+      for (let item of containers ){
+        if(scrollTop - item.offsetTop > 100 && scrollTop - item.offsetTop < 300){
+          let id = item.getAttribute('id')
+          for(let child of document.getElementsByClassName('nav')[0].children){
+            child.className = ''
+          }
+          document.getElementById(`nav-${id}`).className = 'hover'
+          break
+        }
+      }
+    },50)
   })
   return {
     start:function () {
-      getGoods(9921)
+      getGoods('temai')
       getLive()
 
     }

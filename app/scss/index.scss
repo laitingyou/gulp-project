@@ -19,7 +19,7 @@ $blockWidth: 12rem;
 .wrapper{
   display: flex;
   justify-content: center;
-  background: #e32022;
+  background: repeating-linear-gradient(#e31f1f 0%,#f16cd1 100%);
 }
 /*-------live----------*/
 .clear {
@@ -241,7 +241,7 @@ $blockWidth: 12rem;
     }
     .live-btn {
       margin: 0rem auto .1rem;
-      width: 70%;
+      width: 80%;
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 30px;
       line-height: 32px;
@@ -400,7 +400,7 @@ $blockWidth: 12rem;
   margin-top: 0.46rem;
   transform: translateX(120%);
 }
-.nav-hover:hover{
+.hover{
   transform: scale(1.2);
   transition: all 300;
 }
@@ -411,6 +411,10 @@ $blockWidth: 12rem;
   z-index: 2;
   a{
     display: block;
+    &:hover:not(#topic){
+      transform: scale(1.2);
+      transition: all 300;
+    }
   }
   img {
     display: block;

@@ -15,7 +15,7 @@ body {
 .wrapper {
   display: flex;
   justify-content: center;
-  background: #e32022; }
+  background: repeating-linear-gradient(#e31f1f 0%, #f16cd1 100%); }
 
 /*-------live----------*/
 .clear {
@@ -201,7 +201,7 @@ body {
       width: 100%; }
     .live-item .img .live-btn {
       margin: 0rem auto .1rem;
-      width: 70%;
+      width: 80%;
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 30px;
       line-height: 32px; }
@@ -323,7 +323,7 @@ body {
   -webkit-transform: translateX(120%);
   transform: translateX(120%); }
 
-.nav-hover:hover {
+.hover {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
   transition: all 300; }
@@ -336,6 +336,10 @@ body {
   z-index: 2; }
   .nav a {
     display: block; }
+    .nav a:hover:not(#topic) {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+      transition: all 300; }
   .nav img {
     display: block;
     width: 100%; }

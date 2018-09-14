@@ -69,7 +69,7 @@ var Init = function Init() {
     // };
   };
 
-  var getGoods = function getGoods(act_id) {
+  var getGoods = function getGoods(act_type) {
     request({
       url: 'https://www.eelly.test/index.php',
       method: 'get',
@@ -77,11 +77,11 @@ var Init = function Init() {
       args: {
         app: 'activity',
         act: 'activityGoods',
-        act_id: act_id
+        act_id: navHash[act_type]
       },
       success: function success(res) {
-        dataType[act_id] = res;
-        var tpl = document.getElementById('live-tpl').innerHTML;
+        dataType[act_type] = res.goodsList;
+        var tpl = document.getElementById('good-tpl').innerHTML;
         var template = Handlebars.compile(tpl);
         var context = {
           list: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -89,7 +89,7 @@ var Init = function Init() {
           content: "learn Handlebars"
         };
         var html = template(context);
-        document.getElementById('live').innerHTML = html;
+        document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html;
       },
       fail: function fail(err) {
         console.log(err);
@@ -98,7 +98,7 @@ var Init = function Init() {
   };
 
   var getLive = function getLive(pamater) {
-    var tpl = document.getElementById('good-tpl').innerHTML;
+    var tpl = document.getElementById('live-tpl').innerHTML;
     var template = Handlebars.compile(tpl);
     var context = {
       list: [1, 2, 3, 4, 5, 6, 7, 8],
@@ -106,20 +106,114 @@ var Init = function Init() {
       content: "learn Handlebars"
     };
     var html = template(context);
-    document.getElementById('goods-item').innerHTML = html;
-    document.getElementById('goods-item1').innerHTML = html;
-    document.getElementById('goods-item2').innerHTML = html;
-    document.getElementById('goods-item3').innerHTML = html;
+    document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html; // document.getElementById('goods-item1').innerHTML = html
+    // document.getElementById('goods-item2').innerHTML = html
+    // document.getElementById('goods-item3').innerHTML = html
   };
 
   window.addEventListener('hashchange', function () {
-    var act_id = location.hash.replace('#', '');
-    console.log(navHash[act_id]);
-    dataType[act_id] || getGoods(navHash[act_id]);
+    var act_type = location.hash.replace('#', '');
+    dataType[act_type] || getGoods(act_type);
+  });
+  var timer = null;
+  window.addEventListener('scroll', function (e) {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      var scrollTop = document.documentElement.scrollTop;
+      var containers = document.getElementsByClassName('goods-container');
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = containers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          if (scrollTop - item.offsetTop < 200) {
+            var id = item.getAttribute('id');
+
+            if (id === 'living') {
+              getLive();
+            } else {
+              dataType[id] || getGoods(id);
+            }
+
+            break;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = containers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var _item = _step2.value;
+
+          if (scrollTop - _item.offsetTop > 100 && scrollTop - _item.offsetTop < 300) {
+            var _id = _item.getAttribute('id');
+
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+              for (var _iterator3 = document.getElementsByClassName('nav')[0].children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var child = _step3.value;
+                child.className = '';
+              }
+            } catch (err) {
+              _didIteratorError3 = true;
+              _iteratorError3 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+                  _iterator3.return();
+                }
+              } finally {
+                if (_didIteratorError3) {
+                  throw _iteratorError3;
+                }
+              }
+            }
+
+            document.getElementById("nav-".concat(_id)).className = 'hover';
+            break;
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }, 50);
   });
   return {
     start: function start() {
-      getGoods(9921);
+      getGoods('temai');
       getLive();
     }
   };
