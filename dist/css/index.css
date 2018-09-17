@@ -366,10 +366,11 @@ a {
       height: 1.64rem; }
 
 .title-9 {
-  text-align: center; }
+  text-align: center;
+  margin: .3rem 0; }
   .title-9 img {
     width: 6.96rem;
-    height: 1.53rem; }
+    height: 1.3rem; }
 
 .goods-container {
   position: relative;
