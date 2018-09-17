@@ -406,9 +406,9 @@ a {
   .nav a {
     display: block; }
     .nav a:hover:not(#topic):not(#scan):not(#scrolltop):not(#liwu) {
-      -webkit-transform: scale(1.2);
-      transform: scale(1.2);
-      transition: all 200ms; }
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      transition-duration: 0.3s; }
   .nav img {
     display: block;
     width: 100%; }

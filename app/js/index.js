@@ -225,7 +225,8 @@ const Init = function () {
       window.onload=function () {
         document.getElementById('input').focus() // 让每次刷新都滚动最顶部
         mouted()
-        getLive()
+        // getLive()
+        AOS.init()
       }
     }
   }

@@ -490,8 +490,8 @@ $blockWidth: 12rem;
   a{
     display: block;
     &:hover:not(#topic):not(#scan):not(#scrolltop):not(#liwu){
-      transform: scale(1.2);
-      transition: all 200ms;
+      transform: scale(1.1);
+      transition-duration: 0.3s;
     }
   }
   img {
