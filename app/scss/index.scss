@@ -283,7 +283,11 @@ $blockWidth: 12rem;
     }
     .live-tip {
       line-height: 30px;
-      font-size: 22px;
+      font-size: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
     }
     .living {
       background-image: linear-gradient(138deg, #f72386 0, #ff2853 100%);
@@ -295,16 +299,23 @@ $blockWidth: 12rem;
     }
   }
   .live-info {
-    overflow: hidden;
+
     padding: .2rem 0;
     box-sizing: border-box;
     text-align: center;
     font-size: 16px;
+    overflow: hidden;
     .live-name {
-
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
     }
     .sc-live-name {
+      overflow: hidden;
       color: #7b7b7b;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
     }
   }
   &:nth-of-type(4) {
@@ -348,6 +359,7 @@ $blockWidth: 12rem;
   }
   .img {
     .bg{
+      background-color: #ececec;
       background-repeat: no-repeat;
       background-position: center;
       display: block;
@@ -362,11 +374,14 @@ $blockWidth: 12rem;
     box-sizing: border-box;
     text-align: center;
     font-size: 16px;
+    height: 1.5rem;
+    position: relative;
     .goods-name {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      text-align: left;
       /* autoprefixer: off */
       -webkit-box-orient: vertical;
       /* autoprefixer: on */
@@ -383,7 +398,11 @@ $blockWidth: 12rem;
       float: right;
     }
     .goods-btn{
-      margin-top: 10px;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      padding-right: 20px;
+      box-sizing: border-box;
     }
     .active-price{
       float: left;

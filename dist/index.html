@@ -180,9 +180,9 @@
                     <div class="bg" style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
                        alt=""></div>
                     <div class="float">
-                        <div class="live-tip">131244324243523</div>
+                        <div class="live-tip">{{this.title}}</div>
                         <div class="live-btn">
-                            <span class="living active">直播中</span><span>1233人在看</span>
+                            <span class="living active">直播中</span><span>{{this.view}}人在看</span>
                         </div>
                         <img class="xins stylie" src="//static.eelly.com/themes/mall/default/home/v6/images/live/1.png">
                         <img class="xins stylie1" src="//static.eelly.com/themes/mall/default/home/v6/images/live/2.png">
@@ -190,8 +190,8 @@
                     </div>
                 </div>
                 <div class="live-info">
-                    <div class="live-name">衣联网商家</div>
-                    <div class="sc-live-name">广州十三行批发商城</div>
+                    <div class="live-name">{{this.userName}}</div>
+                    <div class="sc-live-name">{{this.addressName}}</div>
                 </div>
             </div>
     </a>
@@ -209,17 +209,17 @@
         <a href="#" class="good-tpl">
             <div class="goods">
                 <div class="img">
-                    <div class="bg" style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
+                    <div class="bg" style="background-image:url('{{this.goodsImg}}')"
                        alt=""></div>
                 </div>
                 <div class="goods-info">
-                    <div class="goods-name">【古兰衣】好质量秋装2018新款韩版宽松百搭圆领套头网红慵懒风毛衣女针织衫女显瘦 深圳市福田区古兰衣服装厂</div>
+                    <div class="goods-name">{{this.goodsName}}</div>
                     <div class="price">
-                        <span class="source-price">原价￥12</span><span class="store-name">XDL服装</span>
+                        <span class="source-price">原价￥{{this.marketPrice}}</span><span class="store-name">{{this.storeName}}</span>
                         <div class="clear"></div>
                     </div>
                     <div class="goods-btn">
-                        <span class="active-price">特价：<em>￥9.9</em></span><span class="buy">立即抢购></span>
+                        <span class="active-price">特价：<em>￥{{this.salePrice}}</em></span><span class="buy">立即抢购></span>
                         <div class="clear"></div>
                     </div>
                 </div>
@@ -231,6 +231,8 @@
     {{/each}}
 </script>
 <script src="./static/handlebars-v4.0.11.js"></script>
+<!--<script src="https://cdn.bootcss.com/Mock.js/1.0.0/mock-min.js"></script>-->
+<!--<script src="./js/test.js"></script>-->
 <script src="./js/index.js"></script>
 </body>
 </html>

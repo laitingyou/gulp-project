@@ -6,23 +6,36 @@ const
   browserSync = require('browser-sync').create(),
   imagemin = require('gulp-imagemin'),
   collector = require('gulp-rev-collector')
+  replace = require('gulp-string-replace')
+  gulpif = require('gulp-if')
+  minimist = require('minimist')
+
+var config = minimist(process.argv.slice(2) || 'production')
+
+var isReplace_js = function () {
+  return replace(/https:\/\/www\.eelly\.test/,'http://localhost:8083')
+}
+
+var pxToRem = function () {
+  // return replace(/px/,function () {
+  //   return 'rem'
+  // })
+
+}
 
 // sass预编译
 gulp.task('css', function () {
   return gulp.src('app/scss/**/*.scss')
     .pipe(autoprefixer())
-    .pipe(collector({
-        replaceReved: true,
-        dirReplacements: {
-          'px': 'rem'
-        }
-      }))
+    // .pipe(pxToRem())
     .pipe(sass())
   .pipe(gulp.dest('dist/css'))
 })
 
+
 gulp.task('js', function () {
   return gulp.src('app/js/**/*.js')
+    .pipe(gulpif(config.env=== 'development',isReplace_js()))
     .pipe(babel())
     .pipe(gulp.dest('dist/js'))
 })

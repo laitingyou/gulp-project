@@ -86,10 +86,10 @@ const Init = function() {
   /**
    * 场次倒计时
    */
-  let timerTemplate = function (act_type) {
+  let timerTemplate = function (act_type,ss) {
     let tpl = document.getElementById('timer').innerHTML
     let template = Handlebars.compile(tpl)
-    timeHandler(10000,function (time) {
+    timeHandler(ss,function (time) {
       let html = template(time);
       document.getElementById(act_type).getElementsByClassName('timer-container')[0].innerHTML = html
     })
@@ -108,13 +108,17 @@ const Init = function() {
         act_id: navHash[act_type],
       },
       success(res){
-        dataType[act_type] = res.goodsList
+        let {goodsList, overTime, startTime} = res
+        dataType[act_type] = goodsList
         let tpl = document.getElementById('good-tpl').innerHTML
         let template = Handlebars.compile(tpl)
-        let context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
+        let context = {list:goodsList.slice(0,8), overTime, startTime };
         let html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html
-        timerTemplate(act_type)
+        let endTieme =  overTime - startTime
+        if(endTieme < 86400){
+          timerTemplate(act_type, endTieme)
+        }
       },
       fail(err){
         console.log(err)
@@ -126,11 +130,26 @@ const Init = function() {
    * @param pamater
    */
   const  getLive=function (pamater) {
-    let tpl = document.getElementById('live-tpl').innerHTML
-    let template = Handlebars.compile(tpl)
-    let context = {list:[1,2,3,4,5,6,7,8], name: "zhaoshuai", content: "learn Handlebars"};
-    let html = template(context);
-    document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html
+    jsonp({
+      url:'https://www.eelly.com/index.php',
+      callback: 'callback',
+      args:{
+        app: 'live',
+        act: 'search'
+      },
+      success(res){
+        let {content} = res
+        let tpl = document.getElementById('live-tpl').innerHTML
+        let template = Handlebars.compile(tpl)
+        let context = {list:content.items};
+        let html = template(context);
+        document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html
+      },
+      fail(err){
+        console.log(err)
+      }
+    })
+
   }
 
 

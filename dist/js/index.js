@@ -100,10 +100,10 @@ var Init = function Init() {
    */
 
 
-  var timerTemplate = function timerTemplate(act_type) {
+  var timerTemplate = function timerTemplate(act_type, ss) {
     var tpl = document.getElementById('timer').innerHTML;
     var template = Handlebars.compile(tpl);
-    timeHandler(10000, function (time) {
+    timeHandler(ss, function (time) {
       var html = template(time);
       document.getElementById(act_type).getElementsByClassName('timer-container')[0].innerHTML = html;
     });
@@ -124,17 +124,24 @@ var Init = function Init() {
         act_id: navHash[act_type]
       },
       success: function success(res) {
-        dataType[act_type] = res.goodsList;
+        var goodsList = res.goodsList,
+            overTime = res.overTime,
+            startTime = res.startTime;
+        dataType[act_type] = goodsList;
         var tpl = document.getElementById('good-tpl').innerHTML;
         var template = Handlebars.compile(tpl);
         var context = {
-          list: [1, 2, 3, 4, 5, 6, 7, 8],
-          name: "zhaoshuai",
-          content: "learn Handlebars"
+          list: goodsList.slice(0, 8),
+          overTime: overTime,
+          startTime: startTime
         };
         var html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html;
-        timerTemplate(act_type);
+        var endTieme = overTime - startTime;
+
+        if (endTieme < 86400) {
+          timerTemplate(act_type, endTieme);
+        }
       },
       fail: function fail(err) {
         console.log(err);
@@ -148,15 +155,27 @@ var Init = function Init() {
 
 
   var getLive = function getLive(pamater) {
-    var tpl = document.getElementById('live-tpl').innerHTML;
-    var template = Handlebars.compile(tpl);
-    var context = {
-      list: [1, 2, 3, 4, 5, 6, 7, 8],
-      name: "zhaoshuai",
-      content: "learn Handlebars"
-    };
-    var html = template(context);
-    document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html;
+    jsonp({
+      url: 'https://www.eelly.com/index.php',
+      callback: 'callback',
+      args: {
+        app: 'live',
+        act: 'search'
+      },
+      success: function success(res) {
+        var content = res.content;
+        var tpl = document.getElementById('live-tpl').innerHTML;
+        var template = Handlebars.compile(tpl);
+        var context = {
+          list: content.items
+        };
+        var html = template(context);
+        document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html;
+      },
+      fail: function fail(err) {
+        console.log(err);
+      }
+    });
   };
 
   var allTimer = [];

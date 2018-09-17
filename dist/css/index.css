@@ -236,7 +236,11 @@ a {
       line-height: 32px; }
     .live-item .img .live-tip {
       line-height: 30px;
-      font-size: 22px; }
+      font-size: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%; }
     .live-item .img .living {
       background-image: linear-gradient(138deg, #f72386 0, #ff2853 100%);
       line-height: 32px;
@@ -245,13 +249,21 @@ a {
       padding: 0 15px 0 20px;
       float: left; }
   .live-item .live-info {
-    overflow: hidden;
     padding: .2rem 0;
     box-sizing: border-box;
     text-align: center;
-    font-size: 16px; }
+    font-size: 16px;
+    overflow: hidden; }
+    .live-item .live-info .live-name {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%; }
     .live-item .live-info .sc-live-name {
-      color: #7b7b7b; }
+      overflow: hidden;
+      color: #7b7b7b;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%; }
   .live-item:nth-of-type(4) {
     margin: 0; }
   .live-item :nth-of-type(8) {
@@ -288,6 +300,7 @@ a {
   .good-tpl .img {
     height: 3.3rem; }
     .good-tpl .img .bg {
+      background-color: #ececec;
       background-repeat: no-repeat;
       background-position: center;
       display: block;
@@ -298,12 +311,15 @@ a {
     padding: .1rem 10px;
     box-sizing: border-box;
     text-align: center;
-    font-size: 16px; }
+    font-size: 16px;
+    height: 1.5rem;
+    position: relative; }
     .good-tpl .goods-info .goods-name {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      text-align: left;
       /* autoprefixer: off */
       -webkit-box-orient: vertical;
       /* autoprefixer: on */ }
@@ -316,7 +332,11 @@ a {
     .good-tpl .goods-info .store-name {
       float: right; }
     .good-tpl .goods-info .goods-btn {
-      margin-top: 10px; }
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      padding-right: 20px;
+      box-sizing: border-box; }
     .good-tpl .goods-info .active-price {
       float: left; }
       .good-tpl .goods-info .active-price em {
