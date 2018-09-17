@@ -59,11 +59,18 @@ const Init = function () {
       return options.inverse(this);
     });
     Handlebars.registerHelper('divend', function (v1, options) {
-      if (v1 === 3 || v1 === 7) {
+      if (v1 % 4 === 3) {
         return options.fn(this);
       }
       return options.inverse(this);
     });
+    Handlebars.registerHelper('add',function (v1, options) {
+        let html = ''
+        for (let i = 0; i< v1%4; i++){
+          html += options.fn(this)
+        }
+        return html
+    })
   }
   /**
    * 场次倒计时
@@ -94,7 +101,7 @@ const Init = function () {
         dataType[ act_type ] = goodsList
         let tpl = document.getElementById('good-tpl').innerHTML
         let template = Handlebars.compile(tpl)
-        let context = { list: goodsList.slice(0, 8), overTime, startTime };
+        let context = { list: goodsList.slice(0, 7), overTime, startTime };
         let html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[ 0 ].innerHTML = html
         let endTieme = overTime - startTime

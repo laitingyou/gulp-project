@@ -3,72 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4cf10ec3-5cc0-42e0-bd0c-13c3a4576ae8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/images/02.png" afterPath="$PROJECT_DIR$/app/images/02.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/04.png" afterPath="$PROJECT_DIR$/app/images/04.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/06.png" afterPath="$PROJECT_DIR$/app/images/06.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/07.png" afterPath="$PROJECT_DIR$/app/images/07.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/08.png" afterPath="$PROJECT_DIR$/app/images/08.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/10.png" afterPath="$PROJECT_DIR$/app/images/10.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/11.png" afterPath="$PROJECT_DIR$/app/images/11.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/12.png" afterPath="$PROJECT_DIR$/app/images/12.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/13.png" afterPath="$PROJECT_DIR$/app/images/13.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/14.png" afterPath="$PROJECT_DIR$/app/images/14.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/15.png" afterPath="$PROJECT_DIR$/app/images/15.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/16.png" afterPath="$PROJECT_DIR$/app/images/16.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/17.png" afterPath="$PROJECT_DIR$/app/images/17.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/18.png" afterPath="$PROJECT_DIR$/app/images/18.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/20.png" afterPath="$PROJECT_DIR$/app/images/20.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/22.png" afterPath="$PROJECT_DIR$/app/images/22.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/across_12.png" afterPath="$PROJECT_DIR$/app/images/across_12.png" />
-      <change beforePath="$PROJECT_DIR$/app/images/dayi.jpg" afterPath="$PROJECT_DIR$/app/images/dayi.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/header.jpg" afterPath="$PROJECT_DIR$/app/images/header.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/home.jpg" afterPath="$PROJECT_DIR$/app/images/home.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/maoyi.jpg" afterPath="$PROJECT_DIR$/app/images/maoyi.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/miaosha.jpg" afterPath="$PROJECT_DIR$/app/images/miaosha.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/neiyi.jpg" afterPath="$PROJECT_DIR$/app/images/neiyi.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/niuzai.jpg" afterPath="$PROJECT_DIR$/app/images/niuzai.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/old.jpg" afterPath="$PROJECT_DIR$/app/images/old.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/temai.jpg" afterPath="$PROJECT_DIR$/app/images/temai.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/tips.jpg" afterPath="$PROJECT_DIR$/app/images/tips.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/waitao.jpg" afterPath="$PROJECT_DIR$/app/images/waitao.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/weiyi.jpg" afterPath="$PROJECT_DIR$/app/images/weiyi.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/zhekou.jpg" afterPath="$PROJECT_DIR$/app/images/zhekou.jpg" />
-      <change beforePath="$PROJECT_DIR$/app/images/zhibo.jpg" afterPath="$PROJECT_DIR$/app/images/zhibo.jpg" />
       <change beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change beforePath="$PROJECT_DIR$/app/js/index.js" afterPath="$PROJECT_DIR$/app/js/index.js" />
-      <change beforePath="$PROJECT_DIR$/app/scss/index.scss" afterPath="$PROJECT_DIR$/app/scss/index.scss" />
-      <change beforePath="$PROJECT_DIR$/dist/css/index.css" afterPath="$PROJECT_DIR$/dist/css/index.css" />
-      <change beforePath="$PROJECT_DIR$/dist/images/02.png" afterPath="$PROJECT_DIR$/dist/images/02.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/04.png" afterPath="$PROJECT_DIR$/dist/images/04.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/06.png" afterPath="$PROJECT_DIR$/dist/images/06.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/07.png" afterPath="$PROJECT_DIR$/dist/images/07.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/08.png" afterPath="$PROJECT_DIR$/dist/images/08.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/10.png" afterPath="$PROJECT_DIR$/dist/images/10.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/11.png" afterPath="$PROJECT_DIR$/dist/images/11.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/12.png" afterPath="$PROJECT_DIR$/dist/images/12.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/13.png" afterPath="$PROJECT_DIR$/dist/images/13.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/14.png" afterPath="$PROJECT_DIR$/dist/images/14.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/15.png" afterPath="$PROJECT_DIR$/dist/images/15.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/16.png" afterPath="$PROJECT_DIR$/dist/images/16.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/17.png" afterPath="$PROJECT_DIR$/dist/images/17.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/18.png" afterPath="$PROJECT_DIR$/dist/images/18.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/20.png" afterPath="$PROJECT_DIR$/dist/images/20.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/22.png" afterPath="$PROJECT_DIR$/dist/images/22.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/across_12.png" afterPath="$PROJECT_DIR$/dist/images/across_12.png" />
-      <change beforePath="$PROJECT_DIR$/dist/images/dayi.jpg" afterPath="$PROJECT_DIR$/dist/images/dayi.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/header.jpg" afterPath="$PROJECT_DIR$/dist/images/header.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/home.jpg" afterPath="$PROJECT_DIR$/dist/images/home.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/maoyi.jpg" afterPath="$PROJECT_DIR$/dist/images/maoyi.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/miaosha.jpg" afterPath="$PROJECT_DIR$/dist/images/miaosha.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/neiyi.jpg" afterPath="$PROJECT_DIR$/dist/images/neiyi.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/niuzai.jpg" afterPath="$PROJECT_DIR$/dist/images/niuzai.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/old.jpg" afterPath="$PROJECT_DIR$/dist/images/old.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/temai.jpg" afterPath="$PROJECT_DIR$/dist/images/temai.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/tips.jpg" afterPath="$PROJECT_DIR$/dist/images/tips.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/waitao.jpg" afterPath="$PROJECT_DIR$/dist/images/waitao.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/weiyi.jpg" afterPath="$PROJECT_DIR$/dist/images/weiyi.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/zhekou.jpg" afterPath="$PROJECT_DIR$/dist/images/zhekou.jpg" />
-      <change beforePath="$PROJECT_DIR$/dist/images/zhibo.jpg" afterPath="$PROJECT_DIR$/dist/images/zhibo.jpg" />
       <change beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
       <change beforePath="$PROJECT_DIR$/dist/js/index.js" afterPath="$PROJECT_DIR$/dist/js/index.js" />
     </list>
@@ -106,8 +42,8 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/js/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="591">
-                  <caret line="188" column="23" lean-forward="true" selection-start-line="188" selection-start-column="23" selection-end-line="188" selection-end-column="23" />
+                <state relative-caret-position="525">
+                  <caret line="68" column="36" lean-forward="false" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -136,8 +72,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="570">
-                  <caret line="233" column="13" lean-forward="false" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
+                <state relative-caret-position="584">
+                  <caret line="230" column="22" lean-forward="true" selection-start-line="230" selection-start-column="22" selection-end-line="230" selection-end-column="22" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#div#0;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -228,8 +164,8 @@
         <option value="$PROJECT_DIR$/app/js/test.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/scss/index.scss" />
-        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/js/index.js" />
+        <option value="$PROJECT_DIR$/app/index.html" />
       </list>
     </option>
   </component>
@@ -356,6 +292,12 @@
               <item name="备货" type="b2602c69:ProjectViewProjectNode" />
               <item name="备货" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="备货" type="b2602c69:ProjectViewProjectNode" />
+              <item name="备货" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="images" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="备货" type="b2602c69:ProjectViewProjectNode" />
@@ -551,11 +493,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537174885579</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="#压缩">
+      <created>1537179971020</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1537179971020</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90706000" />
+    <option name="totallyTimeSpent" value="93704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -644,7 +593,8 @@
     <MESSAGE value="#滚动加载" />
     <MESSAGE value="#mock" />
     <MESSAGE value="#修改样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="#修改样式" />
+    <MESSAGE value="#压缩" />
+    <option name="LAST_COMMIT_MESSAGE" value="#压缩" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1071,8 +1021,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="233" column="13" lean-forward="false" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
+        <state relative-caret-position="584">
+          <caret line="230" column="22" lean-forward="true" selection-start-line="230" selection-start-column="22" selection-end-line="230" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#div#0;n#script#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1082,8 +1032,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="188" column="23" lean-forward="true" selection-start-line="188" selection-start-column="23" selection-end-line="188" selection-end-column="23" />
+        <state relative-caret-position="525">
+          <caret line="68" column="36" lean-forward="false" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
           <folding />
         </state>
       </provider>

@@ -71,11 +71,20 @@ var Init = function Init() {
       return options.inverse(this);
     });
     Handlebars.registerHelper('divend', function (v1, options) {
-      if (v1 === 3 || v1 === 7) {
+      if (v1 % 4 === 3) {
         return options.fn(this);
       }
 
       return options.inverse(this);
+    });
+    Handlebars.registerHelper('add', function (v1, options) {
+      var html = '';
+
+      for (var i = 0; i < v1 % 4; i++) {
+        html += options.fn(this);
+      }
+
+      return html;
     });
   };
   /**
@@ -114,7 +123,7 @@ var Init = function Init() {
         var tpl = document.getElementById('good-tpl').innerHTML;
         var template = Handlebars.compile(tpl);
         var context = {
-          list: goodsList.slice(0, 8),
+          list: goodsList.slice(0, 7),
           overTime: overTime,
           startTime: startTime
         };
