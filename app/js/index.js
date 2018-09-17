@@ -36,7 +36,7 @@ const Init = function () {
       fail && fail(err)
     }
     oHead.appendChild(script);
-    window[ callbackName ] = function (json) {
+    window[ 'jsonp_043888737223328556'||callbackName ] = function (json) {
       oHead.removeChild(script);
       window[ callbackName ] = null;
       success && success(json);
@@ -185,6 +185,7 @@ const Init = function () {
 
     // 数据滚动加载
     let timer = null
+    let cross = 1
     window.addEventListener('scroll', function (e) {
       clearTimeout(timer)
       timer = setTimeout(function () {
@@ -216,14 +217,16 @@ const Init = function () {
       }, 50)
     })
   }
-
   /**
    * 对外开放函数
    */
   return {
     start: function () {
-      mouted()
-      getLive()
+      window.onload=function () {
+        document.getElementById('input').focus() // 让每次刷新都滚动最顶部
+        mouted()
+        getLive()
+      }
     }
   }
 }

@@ -42,7 +42,7 @@ var Init = function Init() {
 
     oHead.appendChild(script);
 
-    window[callbackName] = function (json) {
+    window['jsonp_043888737223328556' || callbackName] = function (json) {
       oHead.removeChild(script);
       window[callbackName] = null;
       success && success(json);
@@ -222,6 +222,7 @@ var Init = function Init() {
     }); // 数据滚动加载
 
     var timer = null;
+    var cross = 1;
     window.addEventListener('scroll', function (e) {
       clearTimeout(timer);
       timer = setTimeout(function () {
@@ -327,8 +328,12 @@ var Init = function Init() {
 
   return {
     start: function start() {
-      mouted();
-      getLive();
+      window.onload = function () {
+        document.getElementById('input').focus(); // 让每次刷新都滚动最顶部
+
+        mouted();
+        getLive();
+      };
     }
   };
 }; // 实例

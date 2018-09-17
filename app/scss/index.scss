@@ -63,7 +63,6 @@ $blockWidth: 12rem;
 .live-item {
   display: block;
   width: 24%;
-  height: 3.40rem;
   text-align: center;
   margin-bottom: .2rem;
   .live-item-container{
@@ -255,7 +254,7 @@ $blockWidth: 12rem;
   }
   .img {
     margin: 0 auto;
-    height: 2.50rem;
+    height: 241px;
     overflow: hidden;
     position: relative;
     .bg{
@@ -289,12 +288,14 @@ $blockWidth: 12rem;
       white-space: nowrap;
       width: 100%;
     }
+    .view{
+    }
     .living {
       background-image: linear-gradient(138deg, #f72386 0, #ff2853 100%);
       line-height: 32px;
       display: inline-block;
       border-radius: 30px;
-      padding: 0 15px 0 20px;
+      padding: 0 .15rem 0 .2rem;
       float: left;
     }
   }
@@ -350,7 +351,6 @@ $blockWidth: 12rem;
 .good-tpl {
   display: block;
   width: 24%;
-  height: 5.11rem;
   text-align: center;
   .goods{
     display: inline-block;
@@ -374,7 +374,6 @@ $blockWidth: 12rem;
     box-sizing: border-box;
     text-align: center;
     font-size: 16px;
-    height: 1.5rem;
     position: relative;
     .goods-name {
       overflow: hidden;
@@ -382,6 +381,7 @@ $blockWidth: 12rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       text-align: left;
+      height: 45px;
       /* autoprefixer: off */
       -webkit-box-orient: vertical;
       /* autoprefixer: on */
@@ -398,13 +398,11 @@ $blockWidth: 12rem;
       float: right;
     }
     .goods-btn{
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      padding-right: 20px;
       box-sizing: border-box;
+      margin-top: 10px;
     }
     .active-price{
+      font-size: 12px;
       float: left;
       em{
         color: red;
@@ -431,7 +429,6 @@ $blockWidth: 12rem;
 
 .content {
   position: relative;
-  padding: 0.46rem 0;
   margin-right: -1.4rem;
   .active-item {
     width: $blockWidth;
@@ -461,7 +458,7 @@ $blockWidth: 12rem;
   @media screen and (max-width:1299px){
     width:15rem;
   }
-  margin: 0 auto;
+  margin: 20px auto;
 
   .item-img {
     width: 100%;
@@ -501,4 +498,12 @@ $blockWidth: 12rem;
     display: block;
     width: 100%;
   }
+}
+#input{
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  z-index: -999;
+  opacity: 0;
+  pointer-events: none;
 }
