@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf10ec3-5cc0-42e0-bd0c-13c3a4576ae8" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/02.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/04.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/06.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/07.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/08.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/10.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/11.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/12.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/13.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/14.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/15.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/16.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/17.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/18.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/20.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/22.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/images/across_12.png" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dist/js/index.js" afterPath="$PROJECT_DIR$/dist/js/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,11 +36,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/js/index.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="330">
                   <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="528">
+                  <caret line="24" column="67" lean-forward="false" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
                   <folding />
                 </state>
               </provider>
@@ -185,6 +178,7 @@
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scss/index.scss" />
         <option value="$PROJECT_DIR$/app/js/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -471,11 +465,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537163465660</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="#mock">
+      <created>1537164474241</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1537164474241</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77820000" />
+    <option name="totallyTimeSpent" value="77904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
@@ -835,13 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/images/header.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -984,6 +978,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="67" lean-forward="false" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
           <folding />
         </state>
       </provider>
