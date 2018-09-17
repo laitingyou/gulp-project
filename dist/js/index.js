@@ -33,8 +33,8 @@ var Init = function Init() {
         fail = _ref.fail;
     var callbackName = ('jsonp_' + Math.random()).replace(".", "");
     var oHead = document.getElementsByTagName('head')[0];
-    args[callback] = callbackName;
     var script = document.createElement('script');
+    args[callback] = callbackName; // 回调函数名
 
     script.onerror = function (err) {
       fail && fail(err);
@@ -55,24 +55,7 @@ var Init = function Init() {
     }
 
     query = query.slice(0, -1);
-    script.src = url + query; // let xhr = new XMLHttpRequest();
-    // // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    // // xhr.setRequestHeader("","");
-    // if(method == 'get'){
-    //   xhr.open(method, url+query , true);
-    //   xhr.send();
-    // }else {
-    //   xhr.open(method, url, true );
-    //   xhr.send(query);
-    // }
-    // // xhr.responseType = 'text';
-    // xhr.onreadystatechange = function () {
-    //   if (xhr.readyState == 4 && xhr.status == 200) {
-    //     success && success(xhr.responseText)
-    //   }else {
-    //     fail && fail(JSON.parse(xhr.responseText))
-    //   }
-    // };
+    script.src = url + query;
   };
   /**
    * 注册口令
@@ -137,7 +120,7 @@ var Init = function Init() {
         };
         var html = template(context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html;
-        var endTieme = overTime - startTime;
+        var endTieme = overTime - startTime; //如果小于一天，就显示倒计时
 
         if (endTieme < 86400) {
           timerTemplate(act_type, endTieme);
@@ -177,13 +160,12 @@ var Init = function Init() {
       }
     });
   };
-
-  var allTimer = [];
   /**
    * 格式化时间
    * @param time
    * @returns {string}
    */
+
 
   var timeFormat = function timeFormat(time) {
     var s = time;
@@ -223,33 +205,29 @@ var Init = function Init() {
 
 
   var mouted = function mouted() {
-    register();
+    // 注册模板口令
+    register(); // 顶部倒计时
+
     timeHandler(10000, function (time) {
       var dd = time.dd,
           hh = time.hh,
           mm = time.mm,
           ss = time.ss;
       document.getElementById('top-timer').innerHTML = dd > 0 ? "".concat(dd, "\u5929").concat(hh, "\u5C0F\u65F6").concat(mm, "\u5206") : "".concat(hh, "\u5C0F\u65F6").concat(mm, "\u5206").concat(ss, "\u79D2");
-    });
-    /**
-     * 监听hash值变化
-     */
+    }); // 监听hash值变化
 
     window.addEventListener('hashchange', function () {
       var act_type = location.hash.replace('#', '');
       dataType[act_type] || getGoods(act_type);
-    });
-    /**
-     * 数据滚动加载
-     * @type {null}
-     */
+    }); // 数据滚动加载
 
     var timer = null;
     window.addEventListener('scroll', function (e) {
       clearTimeout(timer);
       timer = setTimeout(function () {
         var scrollTop = document.documentElement.scrollTop;
-        var containers = document.getElementsByClassName('goods-container');
+        var containers = document.getElementsByClassName('goods-container'); // 处理数据
+
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
@@ -269,7 +247,8 @@ var Init = function Init() {
 
               break;
             }
-          }
+          } // 处理样式
+
         } catch (err) {
           _didIteratorError = true;
           _iteratorError = err;
@@ -348,7 +327,6 @@ var Init = function Init() {
 
   return {
     start: function start() {
-      // getGoods('temai')
       mouted();
       getLive();
     }
