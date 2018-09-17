@@ -47,24 +47,6 @@ const Init = function() {
     }
     query = query.slice(0,-1)
     script.src = url + query;
-    // let xhr = new XMLHttpRequest();
-    // // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    // // xhr.setRequestHeader("","");
-    // if(method == 'get'){
-    //   xhr.open(method, url+query , true);
-    //   xhr.send();
-    // }else {
-    //   xhr.open(method, url, true );
-    //   xhr.send(query);
-    // }
-    // // xhr.responseType = 'text';
-    // xhr.onreadystatechange = function () {
-    //   if (xhr.readyState == 4 && xhr.status == 200) {
-    //     success && success(xhr.responseText)
-    //   }else {
-    //     fail && fail(JSON.parse(xhr.responseText))
-    //   }
-    // };
   }
   /**
    * 注册口令
