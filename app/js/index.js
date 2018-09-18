@@ -76,7 +76,7 @@ const Init = function () {
    */
   const getGoods = function (act_type) {
     jsonp({
-      url: 'https://www.eelly.test/index.php',
+      url: 'https://www.eelly.com/index.php',
       callback: 'callback',
       args: {
         app: 'activity',
@@ -225,7 +225,6 @@ const Init = function () {
           mouted()
         })
         getLive()
-        AOS.init()
       }
     }
   }

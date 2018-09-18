@@ -299,6 +299,7 @@ a {
       background-color: #ececec;
       background-repeat: no-repeat;
       background-position: center;
+      background-size: cover;
       display: block;
       width: 100%;
       height: 100%; }
@@ -340,7 +341,12 @@ a {
       color: #e31f1f;
       padding: 0 8px; }
     .good-tpl .goods-info .store-name {
-      float: right; }
+      float: right;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 50%; }
     .good-tpl .goods-info .goods-btn {
       box-sizing: border-box;
       margin-top: 10px; }

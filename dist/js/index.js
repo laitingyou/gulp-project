@@ -80,7 +80,7 @@ var Init = function Init() {
    */
   var getGoods = function getGoods(act_type) {
     jsonp({
-      url: 'https://www.eelly.test/index.php',
+      url: 'https://www.eelly.com/index.php',
       callback: 'callback',
       args: {
         app: 'activity',
@@ -236,7 +236,6 @@ var Init = function Init() {
           mouted();
         });
         getLive();
-        AOS.init();
       };
     }
   };
