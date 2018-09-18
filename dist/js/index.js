@@ -93,7 +93,7 @@ var Init = function Init() {
             startTime = res.startTime;
 
         dataType[act_type] = goodsList;
-        var context = { list: goodsList, overTime: overTime, startTime: startTime };
+        var context = { list: goodsList, overTime: overTime, startTime: startTime, act_type: act_type };
         var html = template('good-tpl', context);
         document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html;
         var endTieme = overTime - startTime;

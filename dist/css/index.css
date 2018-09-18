@@ -208,12 +208,13 @@ a {
     vertical-align: 3px; }
   .live-item .img {
     margin: 0 auto;
-    height: 241px;
+    height: 206px;
     overflow: hidden;
     position: relative; }
     .live-item .img .bg {
       background-repeat: no-repeat;
       background-position: center;
+      background-size: cover;
       display: block;
       width: 100%;
       height: 100%; }
@@ -223,6 +224,7 @@ a {
       bottom: 0;
       left: 0;
       color: #ffffff;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.8));
       text-align: center;
       width: 100%; }
     .live-item .img .live-btn {
@@ -257,10 +259,11 @@ a {
       width: 100%; }
     .live-item .live-info .sc-live-name {
       overflow: hidden;
-      color: #7b7b7b;
+      color: #aaa;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 100%; }
+      width: 90%;
+      margin: 5px auto 0; }
   .live-item:nth-of-type(4) {
     margin: 0; }
   .live-item :nth-of-type(8) {

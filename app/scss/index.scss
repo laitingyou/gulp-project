@@ -254,12 +254,13 @@ $blockWidth: 12rem;
   }
   .img {
     margin: 0 auto;
-    height: 241px;
+    height: 206px;
     overflow: hidden;
     position: relative;
     .bg{
       background-repeat: no-repeat;
       background-position: center;
+      background-size: cover;
       display: block;
       width: 100%;
       height: 100%;
@@ -270,6 +271,7 @@ $blockWidth: 12rem;
       bottom: 0;
       left: 0;
       color: #ffffff;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.02),rgba(0,0,0,0.8));
       text-align: center;
       width: 100%;
     }
@@ -300,7 +302,6 @@ $blockWidth: 12rem;
     }
   }
   .live-info {
-
     padding: .2rem 0;
     box-sizing: border-box;
     text-align: center;
@@ -313,10 +314,11 @@ $blockWidth: 12rem;
     }
     .sc-live-name {
       overflow: hidden;
-      color: #7b7b7b;
+      color: #aaa;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 100%;
+      width: 90%;
+      margin: 5px auto 0;
     }
   }
   &:nth-of-type(4) {

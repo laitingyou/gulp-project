@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="title-9">
-            <a href="https://www.eelly.com/index.php?app=live"><img src="./images/18.png" alt=""></a>
+            <a href="https://www.eelly.com/index.php?app=live" target="_blank"><img src="./images/18.png" alt=""></a>
         </div>
         <div class="goods-container" id="temai" >
             <div class="timer-container"></div>
@@ -176,7 +176,7 @@
     {{if $index%4===0}}
     <div class="grid">
     {{/if}}
-    <a href="#" class="live-item">
+    <a href="https://www.eelly.com/index.php?app=live&act=liveRoom&liveId={{$value.liveId}}" class="live-item" target="_blank">
             <div class="live-item-container">
                 <div class="img">
                     <div class="bg" style="background-image:url('{{$value.image}}')"
@@ -212,7 +212,7 @@
     {{if $index%4===0}}
     <div class="grid" data-aos="fade-up" data-aos-duration="500">
    {{/if}}
-        <a href="#" class="good-tpl">
+        <a href="https://www.eelly.com/goods/{{$value.goodsId}}.html" class="good-tpl" target="_blank">
             <div class="goods">
                 <div class="img">
                     <div class="bg" style="background-image:url('{{$value.goodsImg}}')"
@@ -220,9 +220,9 @@
                 </div>
                 <div class="goods-info">
                     <div class="goods-name">{{$value.goodsName}}</div>
-                    {{if $value.discount}}
+                    {{if act_type==='zhekou'}}
                     <div class="price">
-                        <span class="zhekou"><span class="qingcang">清仓</span><span class="discount">{{$value.discount}}折</span></span><span class="store-name">{{$value.storeName}}</span>
+                        <span class="zhekou"><span class="qingcang">清仓</span><span class="discount">{{~~($value.discount*100/$value.marketPrice)/10}}折</span></span><span class="store-name">{{$value.storeName}}</span>
                         <div class="clear"></div>
                     </div>
                     <div class="goods-btn">
@@ -235,7 +235,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="goods-btn">
-                        <span class="active-price">特价:<em>￥{{$value.salePrice}}</em></span><span class="buy">立即抢购></span>
+                        <span class="active-price">{{act_type==='miaosha'?'秒杀价:':'特价:'}}<em>￥{{$value.salePrice}}</em></span><span class="buy">立即抢购></span>
                         <div class="clear"></div>
                     </div>
                     {{/if}}

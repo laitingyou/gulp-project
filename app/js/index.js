@@ -86,7 +86,7 @@ const Init = function () {
       success (res) {
         let { goodsList, overTime, startTime } = res
         dataType[ act_type ] = goodsList
-        let context = { list: goodsList, overTime, startTime };
+        let context = { list: goodsList, overTime, startTime, act_type };
         let html = template('good-tpl',context);
         document.getElementById(act_type).getElementsByClassName('item-container')[ 0 ].innerHTML = html
         let endTieme = overTime - startTime
