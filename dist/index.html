@@ -166,26 +166,26 @@
     </div>
 
 </div>
-<script id="timer" type="text/x-handlebars-template">
+<script id="timer" type="text/html">
     <div class="thisTimer">
         <div>距离本场结束</div>
         <div><span class="hour">{{hh}}</span> 时 <span class="minute">{{mm}}</span> 分 <span class="second">{{ss}}</span> 秒</div>
     </div>
 </script>
-<script id="live-tpl" type="text/x-handlebars-template">
-    {{#each list}}
-    {{#divstart @index}}
+<script id="live-tpl" type="text/html">
+    {{each list}}
+    {{if $index%4===0}}
     <div class="grid">
-        {{/divstart}}
+    {{/if}}
     <a href="#" class="live-item">
             <div class="live-item-container">
                 <div class="img">
-                    <div class="bg" style="background-image:url('https://img.eelly.com/G05/M00/00/E4/q4YBAFuYVDmIYLlcAAE2XpXpo8kAABZugJ5XsQAATZ2923.jpg')"
+                    <div class="bg" style="background-image:url('{{$value.image}}')"
                        alt=""></div>
                     <div class="float">
-                        <div class="live-tip">{{this.title}}</div>
+                        <div class="live-tip">{{$value.title}}</div>
                         <div class="live-btn">
-                            <span class="living active">直播中</span><span class="view">{{this.view}}人在看</span>
+                            <span class="living active">直播中</span><span class="view">{{$value.view}}人在看</span>
                         </div>
                         <img class="xins stylie" src="//static.eelly.com/themes/mall/default/home/v6/images/live/1.png">
                         <img class="xins stylie1" src="//static.eelly.com/themes/mall/default/home/v6/images/live/2.png">
@@ -193,50 +193,67 @@
                     </div>
                 </div>
                 <div class="live-info">
-                    <div class="live-name">{{this.userName}}</div>
-                    <div class="sc-live-name">{{this.addressName}}</div>
+                    <div class="live-name">{{$value.userName}}</div>
+                    <div class="sc-live-name">{{$value.addressName}}</div>
                 </div>
             </div>
     </a>
-        {{#divend @index}}
+        {{if $index===list.length-1 && ($index+1)%4 !== 0}}
+        <% for(var i = 0; i < 4-($index+1)%4; i++){ %>
+        <div class="placeholder"></div>
+        <% } %>
+        {{/if}}
+    {{if $index%4===3 }}
     </div>
-    {{/divend}}
+    {{/if}}
     {{/each}}
-    <div class="clear"></div>
 </script>
-<script id="good-tpl" type="text/x-handlebars-template">
-    {{#each list}}
-    {{#divstart @index}}
+<script id="good-tpl" type="text/html">
+    {{each list}}
+    {{if $index%4===0}}
     <div class="grid" data-aos="fade-up" data-aos-duration="500">
-    {{/divstart}}
+   {{/if}}
         <a href="#" class="good-tpl">
             <div class="goods">
                 <div class="img">
-                    <div class="bg" style="background-image:url('{{this.goodsImg}}')"
+                    <div class="bg" style="background-image:url('{{$value.goodsImg}}')"
                        alt=""></div>
                 </div>
                 <div class="goods-info">
-                    <div class="goods-name">{{this.goodsName}}</div>
+                    <div class="goods-name">{{$value.goodsName}}</div>
+                    {{if $value.discount}}
                     <div class="price">
-                        <span class="source-price">原价￥{{this.marketPrice}}</span><span class="store-name">{{this.storeName}}</span>
+                        <span class="zhekou"><span class="qingcang">清仓</span><span class="discount">{{$value.discount}}折</span></span><span class="store-name">{{$value.storeName}}</span>
                         <div class="clear"></div>
                     </div>
                     <div class="goods-btn">
-                        <span class="active-price">特价:<em>￥{{this.salePrice}}</em></span><span class="buy">立即抢购></span>
+                        <span class="active-price"><em>￥{{$value.salePrice}}</em></span><span class="buy">立即抢购></span>
                         <div class="clear"></div>
                     </div>
+                    {{else}}
+                    <div class="price">
+                        <span class="source-price">原价￥{{$value.marketPrice}}</span><span class="store-name">{{$value.storeName}}</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="goods-btn">
+                        <span class="active-price">特价:<em>￥{{$value.salePrice}}</em></span><span class="buy">立即抢购></span>
+                        <div class="clear"></div>
+                    </div>
+                    {{/if}}
                 </div>
             </div>
         </a>
-        <!--{{#add 1}}
-        <div style="width:24%"></div>
-        {{/add}}-->
-        {{#divend @index}}
+        {{if $index===list.length-1 && ($index+1)%4 !== 0}}
+            <% for(var i = 0; i < 4-($index+1)%4; i++){ %>
+                <div class="placeholder"></div>
+            <% } %>
+        {{/if}}
+        {{if $index%4===3 }}
         </div>
-         {{/divend}}
+        {{/if}}
     {{/each}}
 </script>
-<script src="./static/handlebars-v4.0.11.js"></script>
+<script src="./static/template-web.js"></script>
 <script src="./static/aos.js"></script>
 <script src="./js/index.js"></script>
 </body>

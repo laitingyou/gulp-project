@@ -12,7 +12,7 @@ const Init = function () {
     niuzai: 9928
   }
   let dataType = {}
-
+  let nowTime = 0
   /**
    * jsonp 跨域请求
    * @param url 链接
@@ -48,38 +48,25 @@ const Init = function () {
     query = query.slice(0, -1)
     script.src = url + query;
   }
-  /**
-   * 注册口令
-   */
-  const register = function () {
-    Handlebars.registerHelper('divstart', function (v1, options) {
-      if (v1 % 4 === 0) {
-        return options.fn(this);
+  
+  const getTime = function (callback) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/',true);
+    xhr.onreadystatechange = function(e) {
+      if (xhr.readyState == 4) {
+        nowTime = xhr.getResponseHeader('date')
+        callback(xhr.getResponseHeader('date'))
       }
-      return options.inverse(this);
-    });
-    Handlebars.registerHelper('divend', function (v1, options) {
-      if (v1 % 4 === 3) {
-        return options.fn(this);
-      }
-      return options.inverse(this);
-    });
-    Handlebars.registerHelper('add',function (v1, options) {
-        let html = ''
-        for (let i = 0; i< v1%4; i++){
-          html += options.fn(this)
-        }
-        return html
-    })
+    };
+    xhr.send();
   }
+  
   /**
    * 场次倒计时
    */
   let timerTemplate = function (act_type, ss) {
-    let tpl = document.getElementById('timer').innerHTML
-    let template = Handlebars.compile(tpl)
     timeHandler(ss, function (time) {
-      let html = template(time);
+      let html = template('timer',time);
       document.getElementById(act_type).getElementsByClassName('timer-container')[ 0 ].innerHTML = html
     })
   }
@@ -99,10 +86,8 @@ const Init = function () {
       success (res) {
         let { goodsList, overTime, startTime } = res
         dataType[ act_type ] = goodsList
-        let tpl = document.getElementById('good-tpl').innerHTML
-        let template = Handlebars.compile(tpl)
-        let context = { list: goodsList.slice(0, 7), overTime, startTime };
-        let html = template(context);
+        let context = { list: goodsList, overTime, startTime };
+        let html = template('good-tpl',context);
         document.getElementById(act_type).getElementsByClassName('item-container')[ 0 ].innerHTML = html
         let endTieme = overTime - startTime
         //如果小于一天，就显示倒计时
@@ -129,10 +114,8 @@ const Init = function () {
       },
       success (res) {
         let { content } = res
-        let tpl = document.getElementById('live-tpl').innerHTML
-        let template = Handlebars.compile(tpl)
         let context = { list: content.items };
-        let html = template(context);
+        let html = template('live-tpl',context);
         document.getElementById('living').getElementsByClassName('item-container')[ 0 ].innerHTML = html
       },
       fail (err) {
@@ -174,13 +157,16 @@ const Init = function () {
    * 页面进入执行
    */
   const mouted = function () {
-
-    // 注册模板口令
-    register()
-
+    let end = ~~(new Date('2018/9/26 23:59:29').getTime()/1000),
+      now = ~~(new Date(nowTime).getTime()/1000),
+      m = 0
     // 顶部倒计时
-    timeHandler(10000, function (time) {
+    timeHandler(end - now , function (time) {
       let { dd, hh, mm, ss } = time
+      if(dd>0 && m == mm){
+        return 0
+      }
+      m = mm
       document.getElementById('top-timer').innerHTML = dd > 0 ? `${dd}天${hh}小时${mm}分` : `${hh}小时${mm}分${ss}秒`
     })
 
@@ -196,10 +182,11 @@ const Init = function () {
     window.addEventListener('scroll', function (e) {
       clearTimeout(timer)
       timer = setTimeout(function () {
-        let scrollTop = document.documentElement.scrollTop
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
         let containers = document.getElementsByClassName('goods-container')
         // 处理数据
-        for (let item of containers) {
+        for (let i=0;i<containers.length;i++) {
+           let item = containers[i]
           if (scrollTop - item.offsetTop < 200) {
             let id = item.getAttribute('id')
             if (id === 'living') {
@@ -211,17 +198,20 @@ const Init = function () {
           }
         }
         // 处理样式
-        for (let item of containers) {
+        for (let i=0;i<containers.length;i++) {
+          let item = containers[i]
           if (scrollTop - item.offsetTop < 1000) {
             let id = item.getAttribute('id')
-            for (let child of document.getElementsByClassName('nav')[ 0 ].children) {
+            let childs =  document.getElementsByClassName('nav')[ 0 ].children
+            for (let j=0;j<childs.length;j++) {
+              let child = childs[j]
               child.className = ''
             }
             document.getElementById(`nav-${id}`).className = 'hover'
             break
           }
         }
-      }, 50)
+      }, 100)
     })
   }
   /**
@@ -231,7 +221,9 @@ const Init = function () {
     start: function () {
       window.onload=function () {
         document.getElementById('input').focus() // 让每次刷新都滚动最顶部
-        mouted()
+        getTime(function () {
+          mouted()
+        })
         // getLive()
         AOS.init()
       }

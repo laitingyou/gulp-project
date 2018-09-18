@@ -5,9 +5,6 @@ html, body {
   height: 100%;
   transition: all .5s; }
 
-body {
-  font-size: 14px; }
-
 a {
   color: inherit;
   text-decoration: none; }
@@ -327,6 +324,20 @@ a {
     .good-tpl .goods-info .source-price {
       float: left;
       text-decoration: line-through; }
+    .good-tpl .goods-info .zhekou {
+      float: left;
+      font-size: 14px;
+      border: 1px solid #e31f1f;
+      border-radius: 3px; }
+    .good-tpl .goods-info .qingcang {
+      color: white;
+      background: #e31f1f;
+      display: inline-block;
+      padding: 0 8px; }
+    .good-tpl .goods-info .discount {
+      display: inline-block;
+      color: #e31f1f;
+      padding: 0 8px; }
     .good-tpl .goods-info .store-name {
       float: right; }
     .good-tpl .goods-info .goods-btn {
@@ -338,14 +349,14 @@ a {
       .good-tpl .goods-info .active-price em {
         color: red;
         font-weight: bold;
-        font-size: 18px; }
+        font-size: 20px; }
     .good-tpl .goods-info .buy {
       cursor: pointer;
       float: right;
       background: red;
       color: white;
       font-size: 12px;
-      padding: 3px 5px 3px 10px; }
+      padding: 4px 5px 4px 10px; }
 
 .content {
   position: relative;
@@ -395,7 +406,7 @@ a {
 .hover {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
-  transition: all 300; }
+  transition: all 300ms; }
 
 .nav {
   position: -webkit-sticky;
@@ -420,3 +431,6 @@ a {
   z-index: -999;
   opacity: 0;
   pointer-events: none; }
+
+.placeholder {
+  width: 24%; }

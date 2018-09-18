@@ -5,10 +5,11 @@ const
   babel = require('gulp-babel'),
   browserSync = require('browser-sync').create(),
   imagemin = require('gulp-imagemin'),
-  collector = require('gulp-rev-collector')
-  replace = require('gulp-string-replace')
-  gulpif = require('gulp-if')
-  minimist = require('minimist')
+  collector = require('gulp-rev-collector'),
+  replace = require('gulp-string-replace'),
+  gulpif = require('gulp-if'),
+  minimist = require('minimist'),
+  polyfill = require('babel-polyfill')
 
 var config = minimist(process.argv.slice(2) || 'production')
 
