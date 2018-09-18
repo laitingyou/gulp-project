@@ -224,7 +224,7 @@ const Init = function () {
         getTime(function () {
           mouted()
         })
-        // getLive()
+        getLive()
         AOS.init()
       }
     }

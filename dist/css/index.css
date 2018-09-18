@@ -50,7 +50,8 @@ a {
   display: block;
   width: 24%;
   text-align: center;
-  margin-bottom: .2rem; }
+  margin-bottom: .2rem;
+  font-size: 14px; }
   .live-item .live-item-container {
     width: 100%;
     background: #fff; }
