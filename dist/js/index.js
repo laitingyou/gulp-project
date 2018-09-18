@@ -40,7 +40,7 @@ var Init = function Init() {
       fail && fail(err);
     };
     oHead.appendChild(script);
-    window['jsonp_043888737223328556' || callbackName] = function (json) {
+    window[callbackName] = function (json) {
       oHead.removeChild(script);
       window[callbackName] = null;
       success && success(json);
