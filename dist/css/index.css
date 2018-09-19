@@ -349,7 +349,8 @@ a {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: 50%; }
+      width: 46%;
+      text-align: right; }
     .good-tpl .goods-info .goods-btn {
       box-sizing: border-box;
       margin-top: 10px; }

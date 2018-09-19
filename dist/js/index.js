@@ -79,27 +79,41 @@ var Init = function Init() {
    * @param act_type
    */
   var getGoods = function getGoods(act_type) {
+    var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
     jsonp({
       url: 'https://www.eelly.com/index.php',
       callback: 'callback',
       args: {
+        page_per: 8,
+        page: page,
         app: 'activity',
         act: 'activityGoods',
         act_id: navHash[act_type]
       },
       success: function success(res) {
         var goodsList = res.goodsList,
-            overTime = res.overTime,
-            startTime = res.startTime;
+            _res$overTime = res.overTime,
+            overTime = _res$overTime === undefined ? 0 : _res$overTime,
+            _res$startTime = res.startTime,
+            startTime = _res$startTime === undefined ? 0 : _res$startTime,
+            _res$page = res.page,
+            current = _res$page.current,
+            totalPages = _res$page.totalPages;
 
-        dataType[act_type] = goodsList;
+        dataType[act_type] = true;
         var context = { list: goodsList, overTime: overTime, startTime: startTime, act_type: act_type };
         var html = template('good-tpl', context);
-        document.getElementById(act_type).getElementsByClassName('item-container')[0].innerHTML = html;
+        var createDiv = document.createElement('div');
+        createDiv.innerHTML = html;
+        document.getElementById(act_type).getElementsByClassName('item-container')[0].append(createDiv);
         var endTieme = overTime - startTime;
         //如果小于一天，就显示倒计时
-        if (endTieme < 86400) {
+        if (endTieme < 86400 && act_type === 'miaosha' && current === 1) {
           timerTemplate(act_type, endTieme);
+        }
+        if (current < totalPages) {
+          getGoods(act_type, ++current);
         }
       },
       fail: function fail(err) {
@@ -117,7 +131,7 @@ var Init = function Init() {
       callback: 'callback',
       args: {
         app: 'live',
-        act: 'search'
+        act: 'getHomeLiveList'
       },
       success: function success(res) {
         var content = res.content;

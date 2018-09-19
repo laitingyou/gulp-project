@@ -74,25 +74,32 @@ const Init = function () {
    * 获取商品
    * @param act_type
    */
-  const getGoods = function (act_type) {
+  const getGoods = function (act_type,page=1) {
     jsonp({
       url: 'https://www.eelly.com/index.php',
       callback: 'callback',
       args: {
+        page_per:8,
+        page,
         app: 'activity',
         act: 'activityGoods',
         act_id: navHash[ act_type ],
       },
       success (res) {
-        let { goodsList, overTime, startTime } = res
-        dataType[ act_type ] = goodsList
+        let { goodsList, overTime=0, startTime=0,page:{current,totalPages} } = res
+        dataType[ act_type ] = true
         let context = { list: goodsList, overTime, startTime, act_type };
         let html = template('good-tpl',context);
-        document.getElementById(act_type).getElementsByClassName('item-container')[ 0 ].innerHTML = html
+        let createDiv = document.createElement('div')
+        createDiv.innerHTML = html
+        document.getElementById(act_type).getElementsByClassName('item-container')[ 0 ].append(createDiv)
         let endTieme = overTime - startTime
         //如果小于一天，就显示倒计时
-        if (endTieme < 86400) {
+        if (endTieme < 86400 && act_type === 'miaosha' && current===1) {
           timerTemplate(act_type, endTieme)
+        }
+        if(current<totalPages){
+          getGoods(act_type,++current)
         }
       },
       fail (err) {
@@ -110,7 +117,7 @@ const Init = function () {
       callback: 'callback',
       args: {
         app: 'live',
-        act: 'search'
+        act: 'getHomeLiveList'
       },
       success (res) {
         let { content } = res
