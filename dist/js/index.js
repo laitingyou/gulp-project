@@ -106,7 +106,7 @@ var Init = function Init() {
         var html = template('good-tpl', context);
         var createDiv = document.createElement('div');
         createDiv.innerHTML = html;
-        document.getElementById(act_type).getElementsByClassName('item-container')[0].append(createDiv);
+        document.getElementById(act_type).getElementsByClassName('item-container')[0].appendChild(createDiv);
         var endTieme = overTime - startTime;
         //如果小于一天，就显示倒计时
         if (endTieme < 86400 && act_type === 'miaosha' && current === 1) {
@@ -136,7 +136,7 @@ var Init = function Init() {
       success: function success(res) {
         var content = res.content;
 
-        var context = { list: content.items };
+        var context = { list: content.items.slice(0, 8) };
         var html = template('live-tpl', context);
         document.getElementById('living').getElementsByClassName('item-container')[0].innerHTML = html;
       },
@@ -204,6 +204,8 @@ var Init = function Init() {
     // 数据滚动加载
     var timer = null;
     var cross = 1;
+    var innerHeight = window.innerHeight;
+    var navs = document.getElementsByClassName('nav')[0].children;
     window.addEventListener('scroll', function (e) {
       clearTimeout(timer);
       timer = setTimeout(function () {
@@ -211,31 +213,37 @@ var Init = function Init() {
         var containers = document.getElementsByClassName('goods-container');
         // 处理数据
         for (var i = 0; i < containers.length; i++) {
-          var item = containers[i];
-          if (scrollTop - item.offsetTop < 200) {
-            var id = item.getAttribute('id');
-            if (id === 'living') {
-              getLive();
-            } else {
+          var item = containers[i].getElementsByClassName('item-img')[0];
+          if (item.y > 0 && item.y < innerHeight) {
+            var id = item.parentElement.id;
+            if (id !== 'living') {
               dataType[id] || getGoods(id);
             }
+            for (var j = 0; j < navs.length; j++) {
+              var nav = navs[j];
+              if (nav.className) {
+                nav.className = '';
+                break;
+              }
+            }
+            document.getElementById('nav-' + id).className = 'hover';
             break;
           }
         }
         // 处理样式
-        for (var _i = 0; _i < containers.length; _i++) {
-          var _item = containers[_i];
-          if (scrollTop - _item.offsetTop < 1000) {
-            var _id = _item.getAttribute('id');
-            var childs = document.getElementsByClassName('nav')[0].children;
-            for (var j = 0; j < childs.length; j++) {
-              var child = childs[j];
-              child.className = '';
-            }
-            document.getElementById('nav-' + _id).className = 'hover';
-            break;
-          }
-        }
+        // for (let i=0;i<containers.length;i++) {
+        //   let item = containers[i]
+        //   if (scrollTop - item.offsetTop < 1000) {
+        //     let id = item.getAttribute('id')
+        //
+        //     for (let j=0;j<childs.length;j++) {
+        //       let child = childs[j]
+        //       child.className = ''
+        //     }
+        //     document.getElementById(`nav-${id}`).className = 'hover'
+        //     break
+        //   }
+        // }
       }, 100);
     });
   };
