@@ -6,13 +6,13 @@
 
     <link rel="stylesheet" href="./css/index.css?v=201809181505" type="text/css">
     <script>
-      var windowWidth = window.innerWidth,
-        sourceWidth = 1920;
-      document.getElementsByTagName('html')[ 0 ].style.fontSize = 100 * windowWidth / sourceWidth + 'px';
-      window.addEventListener('resize', function (ev) {
-        windowWidth = window.innerWidth
+        var windowWidth = window.innerWidth || document.body.clientWidth,
+          sourceWidth = 1920;
         document.getElementsByTagName('html')[ 0 ].style.fontSize = 100 * windowWidth / sourceWidth + 'px';
-      })
+        window.addEventListener('resize', function (ev) {
+          windowWidth = window.innerWidth
+          document.getElementsByTagName('html')[ 0 ].style.fontSize = 100 * windowWidth / sourceWidth + 'px';
+        })
     </script>
 </head>
 <body>

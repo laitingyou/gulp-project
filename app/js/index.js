@@ -196,7 +196,8 @@ const Init = function () {
         // 处理数据
         for (let i=0;i<containers.length;i++) {
            let item = containers[i].getElementsByClassName('item-img')[0]
-          if (item.y>0 && item.y< innerHeight) {
+          let y = item.getBoundingClientRect().top
+          if (y>0 && y< innerHeight) {
              let id = item.parentElement.id
             if (id !== 'living') {
               dataType[ id ] || getGoods(id)
@@ -235,6 +236,11 @@ const Init = function () {
   return {
     start: function () {
       window.onload=function () {
+        if(!window.addEventListener){
+          window.addEventListener = function (type,callback) {
+            window.attachEvent(`on${type}`,callback)
+          }
+        }
         document.getElementById('input').focus() // 让每次刷新都滚动最顶部
         getTime(function () {
           mouted()

@@ -214,7 +214,8 @@ var Init = function Init() {
         // 处理数据
         for (var i = 0; i < containers.length; i++) {
           var item = containers[i].getElementsByClassName('item-img')[0];
-          if (item.y > 0 && item.y < innerHeight) {
+          var y = item.getBoundingClientRect().top;
+          if (y > 0 && y < innerHeight) {
             var id = item.parentElement.id;
             if (id !== 'living') {
               dataType[id] || getGoods(id);
@@ -253,6 +254,11 @@ var Init = function Init() {
   return {
     start: function start() {
       window.onload = function () {
+        if (!window.addEventListener) {
+          window.addEventListener = function (type, callback) {
+            window.attachEvent('on' + type, callback);
+          };
+        }
         document.getElementById('input').focus(); // 让每次刷新都滚动最顶部
         getTime(function () {
           mouted();
